@@ -597,10 +597,28 @@
                 <p style="color: #666; margin-bottom: 20px;">Welcome to the admin panel. Select an option below to manage your website.</p>
                 
                 <div class="dashboard-grid">
+                    <div class="dashboard-card" onclick="showPage('statisticsEditor')">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Statistics Manager</h3>
+                        <p>Update website statistics - years experience, projects completed, happy clients, and support hours.</p>
+                    </div>
+
+                    <div class="dashboard-card" onclick="showPage('servicesEditor')">
+                        <i class="fas fa-cogs"></i>
+                        <h3>Services Manager</h3>
+                        <p>Add, edit, or remove services. Update service titles, descriptions, and icons.</p>
+                    </div>
+
+                    <div class="dashboard-card" onclick="showPage('headerFooterEditor')">
+                        <i class="fas fa-bars"></i>
+                        <h3>Header & Footer</h3>
+                        <p>Update navigation menu, footer content, contact information, and social media links.</p>
+                    </div>
+
                     <div class="dashboard-card" onclick="showPage('contentEditor')">
                         <i class="fas fa-edit"></i>
                         <h3>Content Editor</h3>
-                        <p>Update website content, hero section, services, and contact information.</p>
+                        <p>Update website content, hero section, and general page content.</p>
                     </div>
 
                     <div class="dashboard-card" onclick="showPage('imageUpload')">
@@ -649,6 +667,223 @@
                         <i class="fas fa-external-link-alt"></i>
                         <h3>View Website</h3>
                         <p>Open your live website in a new tab to see your changes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Editor -->
+            <div class="page-content" id="statisticsEditorPage">
+                <div class="page-header">
+                    <h2>Statistics Manager</h2>
+                    <button class="btn-back" onclick="showPage('dashboard')">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </button>
+                </div>
+
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    <h3 style="margin-bottom: 20px; color: var(--primary);">
+                        <i class="fas fa-chart-line"></i> Update Website Statistics
+                    </h3>
+                    <p style="color: #666; margin-bottom: 30px;">These statistics appear on your website homepage. Changes save individually and update the website immediately.</p>
+
+                    <div class="form-row" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+                        <!-- Years Experience -->
+                        <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; border-left: 4px solid var(--primary);">
+                            <label style="display: block; margin-bottom: 10px; font-weight: 600; color: var(--primary);">
+                                <i class="fas fa-calendar-alt"></i> Years of Experience
+                            </label>
+                            <input type="number" id="statYearsExperience" value="15" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; font-size: 24px; font-weight: bold; text-align: center; margin-bottom: 15px;">
+                            <button class="btn btn-primary" onclick="saveStatistic('yearsExperience')" style="width: 100%;">
+                                <i class="fas fa-save"></i> Save Years Experience
+                            </button>
+                        </div>
+
+                        <!-- Projects Completed -->
+                        <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; border-left: 4px solid var(--success);">
+                            <label style="display: block; margin-bottom: 10px; font-weight: 600; color: var(--success);">
+                                <i class="fas fa-project-diagram"></i> Projects Completed
+                            </label>
+                            <input type="number" id="statProjectsCompleted" value="500" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; font-size: 24px; font-weight: bold; text-align: center; margin-bottom: 15px;">
+                            <button class="btn" onclick="saveStatistic('projectsCompleted')" style="width: 100%; background: var(--success);">
+                                <i class="fas fa-save"></i> Save Projects
+                            </button>
+                        </div>
+
+                        <!-- Happy Clients -->
+                        <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; border-left: 4px solid #17a2b8;">
+                            <label style="display: block; margin-bottom: 10px; font-weight: 600; color: #17a2b8;">
+                                <i class="fas fa-smile"></i> Happy Clients
+                            </label>
+                            <input type="number" id="statHappyClients" value="350" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; font-size: 24px; font-weight: bold; text-align: center; margin-bottom: 15px;">
+                            <button class="btn" onclick="saveStatistic('happyClients')" style="width: 100%; background: #17a2b8;">
+                                <i class="fas fa-save"></i> Save Clients
+                            </button>
+                        </div>
+
+                        <!-- Support Hours -->
+                        <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; border-left: 4px solid #ffc107;">
+                            <label style="display: block; margin-bottom: 10px; font-weight: 600; color: #ffc107;">
+                                <i class="fas fa-clock"></i> Support Hours (24/7, etc.)
+                            </label>
+                            <input type="text" id="statSupportHours" value="24/7" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; font-size: 24px; font-weight: bold; text-align: center; margin-bottom: 15px;">
+                            <button class="btn" onclick="saveStatistic('supportHours')" style="width: 100%; background: #ffc107; color: #000;">
+                                <i class="fas fa-save"></i> Save Support Hours
+                            </button>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 30px; padding: 20px; background: #e7f3ff; border-left: 4px solid #2196F3; border-radius: 4px;">
+                        <h4 style="margin: 0 0 10px 0; color: #2196F3;"><i class="fas fa-info-circle"></i> How It Works</h4>
+                        <p style="margin: 0; line-height: 1.6;">
+                            Click any "Save" button to update that specific statistic on your website immediately. 
+                            Each statistic saves independently, so you don't have to save all at once. 
+                            The changes appear on your website homepage in the statistics section.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services Editor -->
+            <div class="page-content" id="servicesEditorPage">
+                <div class="page-header">
+                    <h2>Services Manager</h2>
+                    <button class="btn-back" onclick="showPage('dashboard')">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </button>
+                </div>
+
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 20px; color: var(--primary);">
+                        <i class="fas fa-cogs"></i> Manage Your Services
+                    </h3>
+                    <p style="color: #666; margin-bottom: 20px;">Add, edit, or remove services displayed on your website. Each service saves individually.</p>
+                    
+                    <button class="btn btn-primary" onclick="addNewService()" style="margin-bottom: 20px;">
+                        <i class="fas fa-plus"></i> Add New Service
+                    </button>
+
+                    <div id="servicesList">
+                        <!-- Services will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Header & Footer Editor -->
+            <div class="page-content" id="headerFooterEditorPage">
+                <div class="page-header">
+                    <h2>Header & Footer Manager</h2>
+                    <button class="btn-back" onclick="showPage('dashboard')">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </button>
+                </div>
+
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 20px; color: var(--primary);">
+                        <i class="fas fa-bars"></i> Header Content
+                    </h3>
+
+                    <!-- Company Name -->
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                            <i class="fas fa-building"></i> Company Name
+                        </label>
+                        <input type="text" id="companyName" value="Cyberlogic IT" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
+                        <button class="btn btn-primary" onclick="saveHeaderFooter('companyName')" style="width: auto;">
+                            <i class="fas fa-save"></i> Save Company Name
+                        </button>
+                    </div>
+
+                    <!-- Tagline/Slogan -->
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                            <i class="fas fa-quote-left"></i> Tagline/Slogan
+                        </label>
+                        <input type="text" id="companyTagline" value="Custom Computer Systems & IT Consulting" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
+                        <button class="btn btn-primary" onclick="saveHeaderFooter('companyTagline')" style="width: auto;">
+                            <i class="fas fa-save"></i> Save Tagline
+                        </button>
+                    </div>
+                </div>
+
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 20px; color: var(--primary);">
+                        <i class="fas fa-address-card"></i> Contact Information
+                    </h3>
+
+                    <div class="form-row" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                        <!-- Email -->
+                        <div style="padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                            <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                                <i class="fas fa-envelope"></i> Email Address
+                            </label>
+                            <input type="email" id="contactEmail" value="support@cyberlogicit.com.au" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
+                            <button class="btn btn-primary" onclick="saveHeaderFooter('contactEmail')" style="width: 100%;">
+                                <i class="fas fa-save"></i> Save Email
+                            </button>
+                        </div>
+
+                        <!-- Phone -->
+                        <div style="padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                            <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                                <i class="fas fa-phone"></i> Phone Number
+                            </label>
+                            <input type="tel" id="contactPhone" value="(03) 9876 5432" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
+                            <button class="btn btn-primary" onclick="saveHeaderFooter('contactPhone')" style="width: 100%;">
+                                <i class="fas fa-save"></i> Save Phone
+                            </button>
+                        </div>
+
+                        <!-- Address -->
+                        <div style="padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                            <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                                <i class="fas fa-map-marker-alt"></i> Address
+                            </label>
+                            <input type="text" id="contactAddress" value="Melbourne, Victoria, Australia" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
+                            <button class="btn btn-primary" onclick="saveHeaderFooter('contactAddress')" style="width: 100%;">
+                                <i class="fas fa-save"></i> Save Address
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    <h3 style="margin-bottom: 20px; color: var(--primary);">
+                        <i class="fas fa-share-alt"></i> Social Media Links
+                    </h3>
+
+                    <div class="form-row" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                        <!-- Facebook -->
+                        <div style="padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                            <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                                <i class="fab fa-facebook"></i> Facebook URL
+                            </label>
+                            <input type="url" id="socialFacebook" placeholder="https://facebook.com/yourpage" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
+                            <button class="btn btn-primary" onclick="saveHeaderFooter('socialFacebook')" style="width: 100%;">
+                                <i class="fas fa-save"></i> Save Facebook
+                            </button>
+                        </div>
+
+                        <!-- Twitter -->
+                        <div style="padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                            <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                                <i class="fab fa-twitter"></i> Twitter URL
+                            </label>
+                            <input type="url" id="socialTwitter" placeholder="https://twitter.com/yourhandle" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
+                            <button class="btn btn-primary" onclick="saveHeaderFooter('socialTwitter')" style="width: 100%;">
+                                <i class="fas fa-save"></i> Save Twitter
+                            </button>
+                        </div>
+
+                        <!-- LinkedIn -->
+                        <div style="padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                            <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                                <i class="fab fa-linkedin"></i> LinkedIn URL
+                            </label>
+                            <input type="url" id="socialLinkedIn" placeholder="https://linkedin.com/company/yourcompany" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
+                            <button class="btn btn-primary" onclick="saveHeaderFooter('socialLinkedIn')" style="width: 100%;">
+                                <i class="fas fa-save"></i> Save LinkedIn
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -766,6 +1001,364 @@
                 </div>
             </div>
 
+            <!-- Statistics Manager -->
+            <div class="page-content" id="statisticsEditorPage">
+                <div class="page-header">
+                    <h2>Statistics Manager</h2>
+                    <button class="btn-back" onclick="showPage('dashboard')">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </button>
+                </div>
+
+                <p style="color: #666; margin-bottom: 20px;">Update the statistics displayed on your website. Changes save individually.</p>
+
+                <div class="editor-section">
+                    <h3><i class="fas fa-chart-bar"></i> Website Statistics</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Years of Experience</label>
+                            <input type="number" class="form-control" id="stat1Number" placeholder="15" value="15">
+                            <button class="btn" onclick="saveStatistic('stat1')" style="margin-top: 10px;">
+                                <i class="fas fa-save"></i> Save
+                            </button>
+                        </div>
+                        <div class="form-group">
+                            <label>Label</label>
+                            <input type="text" class="form-control" id="stat1Label" placeholder="Years Experience" value="Years Experience">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Projects Completed</label>
+                            <input type="number" class="form-control" id="stat2Number" placeholder="500" value="500">
+                            <button class="btn" onclick="saveStatistic('stat2')" style="margin-top: 10px;">
+                                <i class="fas fa-save"></i> Save
+                            </button>
+                        </div>
+                        <div class="form-group">
+                            <label>Label</label>
+                            <input type="text" class="form-control" id="stat2Label" placeholder="Projects Completed" value="Projects Completed">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Happy Clients</label>
+                            <input type="number" class="form-control" id="stat3Number" placeholder="200" value="200">
+                            <button class="btn" onclick="saveStatistic('stat3')" style="margin-top: 10px;">
+                                <i class="fas fa-save"></i> Save
+                            </button>
+                        </div>
+                        <div class="form-group">
+                            <label>Label</label>
+                            <input type="text" class="form-control" id="stat3Label" placeholder="Happy Clients" value="Happy Clients">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Support Hours</label>
+                            <input type="number" class="form-control" id="stat4Number" placeholder="24" value="24">
+                            <button class="btn" onclick="saveStatistic('stat4')" style="margin-top: 10px;">
+                                <i class="fas fa-save"></i> Save
+                            </button>
+                        </div>
+                        <div class="form-group">
+                            <label>Label</label>
+                            <input type="text" class="form-control" id="stat4Label" placeholder="24/7 Support" value="24/7 Support">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="save-status" id="statsSaveStatus"></div>
+            </div>
+
+            <!-- Services Manager -->
+            <div class="page-content" id="servicesEditorPage">
+                <div class="page-header">
+                    <h2>Services Manager</h2>
+                    <button class="btn-back" onclick="showPage('dashboard')">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </button>
+                </div>
+
+                <p style="color: #666; margin-bottom: 20px;">Manage all services displayed on your website. Each service saves individually.</p>
+
+                <!-- Service 1 -->
+                <div class="editor-section">
+                    <h3><i class="fas fa-cog"></i> Service 1</h3>
+                    <div class="form-group">
+                        <label>Service Title</label>
+                        <input type="text" class="form-control" id="service1TitleEdit" placeholder="Custom Computer Systems">
+                    </div>
+                    <div class="form-group">
+                        <label>Service Description</label>
+                        <textarea class="form-control" id="service1DescEdit" rows="4" placeholder="Tailored hardware and software solutions..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Icon Class (Font Awesome)</label>
+                        <input type="text" class="form-control" id="service1Icon" placeholder="fas fa-desktop" value="fas fa-desktop">
+                        <small>Examples: fas fa-desktop, fas fa-server, fas fa-laptop-code</small>
+                    </div>
+                    <button class="btn-save" onclick="saveService('service1')">
+                        <i class="fas fa-save"></i> Save Service 1
+                    </button>
+                    <div class="save-status" id="service1SaveStatus"></div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="editor-section">
+                    <h3><i class="fas fa-cog"></i> Service 2</h3>
+                    <div class="form-group">
+                        <label>Service Title</label>
+                        <input type="text" class="form-control" id="service2TitleEdit" placeholder="IT Consulting">
+                    </div>
+                    <div class="form-group">
+                        <label>Service Description</label>
+                        <textarea class="form-control" id="service2DescEdit" rows="4" placeholder="Expert advice for your IT infrastructure..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Icon Class (Font Awesome)</label>
+                        <input type="text" class="form-control" id="service2Icon" placeholder="fas fa-user-tie" value="fas fa-user-tie">
+                    </div>
+                    <button class="btn-save" onclick="saveService('service2')">
+                        <i class="fas fa-save"></i> Save Service 2
+                    </button>
+                    <div class="save-status" id="service2SaveStatus"></div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="editor-section">
+                    <h3><i class="fas fa-cog"></i> Service 3</h3>
+                    <div class="form-group">
+                        <label>Service Title</label>
+                        <input type="text" class="form-control" id="service3TitleEdit" placeholder="Network Solutions">
+                    </div>
+                    <div class="form-group">
+                        <label>Service Description</label>
+                        <textarea class="form-control" id="service3DescEdit" rows="4" placeholder="Robust networking for businesses..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Icon Class (Font Awesome)</label>
+                        <input type="text" class="form-control" id="service3Icon" placeholder="fas fa-network-wired" value="fas fa-network-wired">
+                    </div>
+                    <button class="btn-save" onclick="saveService('service3')">
+                        <i class="fas fa-save"></i> Save Service 3
+                    </button>
+                    <div class="save-status" id="service3SaveStatus"></div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="editor-section">
+                    <h3><i class="fas fa-cog"></i> Service 4</h3>
+                    <div class="form-group">
+                        <label>Service Title</label>
+                        <input type="text" class="form-control" id="service4TitleEdit" placeholder="Cloud Services">
+                    </div>
+                    <div class="form-group">
+                        <label>Service Description</label>
+                        <textarea class="form-control" id="service4DescEdit" rows="4" placeholder="Secure cloud hosting and backup..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Icon Class (Font Awesome)</label>
+                        <input type="text" class="form-control" id="service4Icon" placeholder="fas fa-cloud" value="fas fa-cloud">
+                    </div>
+                    <button class="btn-save" onclick="saveService('service4')">
+                        <i class="fas fa-save"></i> Save Service 4
+                    </button>
+                    <div class="save-status" id="service4SaveStatus"></div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="editor-section">
+                    <h3><i class="fas fa-cog"></i> Service 5</h3>
+                    <div class="form-group">
+                        <label>Service Title</label>
+                        <input type="text" class="form-control" id="service5TitleEdit" placeholder="Security Solutions">
+                    </div>
+                    <div class="form-group">
+                        <label>Service Description</label>
+                        <textarea class="form-control" id="service5DescEdit" rows="4" placeholder="Enterprise security and protection..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Icon Class (Font Awesome)</label>
+                        <input type="text" class="form-control" id="service5Icon" placeholder="fas fa-shield-alt" value="fas fa-shield-alt">
+                    </div>
+                    <button class="btn-save" onclick="saveService('service5')">
+                        <i class="fas fa-save"></i> Save Service 5
+                    </button>
+                    <div class="save-status" id="service5SaveStatus"></div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="editor-section">
+                    <h3><i class="fas fa-cog"></i> Service 6</h3>
+                    <div class="form-group">
+                        <label>Service Title</label>
+                        <input type="text" class="form-control" id="service6TitleEdit" placeholder="Support & Maintenance">
+                    </div>
+                    <div class="form-group">
+                        <label>Service Description</label>
+                        <textarea class="form-control" id="service6DescEdit" rows="4" placeholder="24/7 technical support..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Icon Class (Font Awesome)</label>
+                        <input type="text" class="form-control" id="service6Icon" placeholder="fas fa-headset" value="fas fa-headset">
+                    </div>
+                    <button class="btn-save" onclick="saveService('service6')">
+                        <i class="fas fa-save"></i> Save Service 6
+                    </button>
+                    <div class="save-status" id="service6SaveStatus"></div>
+                </div>
+            </div>
+
+            <!-- Header & Footer Manager -->
+            <div class="page-content" id="headerFooterEditorPage">
+                <div class="page-header">
+                    <h2>Header & Footer Manager</h2>
+                    <button class="btn-back" onclick="showPage('dashboard')">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </button>
+                </div>
+
+                <p style="color: #666; margin-bottom: 20px;">Update navigation, footer content, and contact information. Each section saves individually.</p>
+
+                <!-- Navigation Menu -->
+                <div class="editor-section">
+                    <h3><i class="fas fa-bars"></i> Navigation Menu</h3>
+                    <p style="color: #666; margin-bottom: 15px;">Edit navigation menu items (link text and targets)</p>
+                    
+                    <div class="form-group">
+                        <label>Menu Item 1</label>
+                        <div class="form-row">
+                            <input type="text" class="form-control" id="nav1Text" placeholder="Home" value="Home">
+                            <input type="text" class="form-control" id="nav1Link" placeholder="#home" value="#home">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Menu Item 2</label>
+                        <div class="form-row">
+                            <input type="text" class="form-control" id="nav2Text" placeholder="Services" value="Services">
+                            <input type="text" class="form-control" id="nav2Link" placeholder="#services" value="#services">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Menu Item 3</label>
+                        <div class="form-row">
+                            <input type="text" class="form-control" id="nav3Text" placeholder="About" value="About">
+                            <input type="text" class="form-control" id="nav3Link" placeholder="#about" value="#about">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Menu Item 4</label>
+                        <div class="form-row">
+                            <input type="text" class="form-control" id="nav4Text" placeholder="Contact" value="Contact">
+                            <input type="text" class="form-control" id="nav4Link" placeholder="#contact" value="#contact">
+                        </div>
+                    </div>
+
+                    <button class="btn-save" onclick="saveNavigation()">
+                        <i class="fas fa-save"></i> Save Navigation
+                    </button>
+                    <div class="save-status" id="navSaveStatus"></div>
+                </div>
+
+                <!-- Footer Content -->
+                <div class="editor-section">
+                    <h3><i class="fas fa-align-left"></i> Footer Content</h3>
+                    
+                    <div class="form-group">
+                        <label>Company Name</label>
+                        <input type="text" class="form-control" id="footerCompany" placeholder="Cyberlogic IT">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Footer Tagline</label>
+                        <input type="text" class="form-control" id="footerTagline" placeholder="Your Trusted IT Partner">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Footer Description</label>
+                        <textarea class="form-control" id="footerDesc" rows="3" placeholder="Professional IT services and solutions..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Copyright Text</label>
+                        <input type="text" class="form-control" id="footerCopyright" placeholder="© 2025 Cyberlogic IT. All rights reserved.">
+                    </div>
+
+                    <button class="btn-save" onclick="saveFooterContent()">
+                        <i class="fas fa-save"></i> Save Footer Content
+                    </button>
+                    <div class="save-status" id="footerContentSaveStatus"></div>
+                </div>
+
+                <!-- Footer Contact Info -->
+                <div class="editor-section">
+                    <h3><i class="fas fa-address-card"></i> Footer Contact Information</h3>
+                    
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" class="form-control" id="footerPhone" placeholder="1300 CYBER IT">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" class="form-control" id="footerEmail" placeholder="info@cyberlogicit.com.au">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Business Address</label>
+                        <input type="text" class="form-control" id="footerAddress" placeholder="Melbourne, Victoria, AU">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Business Hours</label>
+                        <input type="text" class="form-control" id="footerHours" placeholder="Mon-Fri: 9AM-5PM">
+                    </div>
+
+                    <button class="btn-save" onclick="saveFooterContact()">
+                        <i class="fas fa-save"></i> Save Contact Info
+                    </button>
+                    <div class="save-status" id="footerContactSaveStatus"></div>
+                </div>
+
+                <!-- Social Media Links -->
+                <div class="editor-section">
+                    <h3><i class="fas fa-share-alt"></i> Social Media Links</h3>
+                    
+                    <div class="form-group">
+                        <label>Facebook URL</label>
+                        <input type="url" class="form-control" id="socialFacebook" placeholder="https://facebook.com/yourpage">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Twitter/X URL</label>
+                        <input type="url" class="form-control" id="socialTwitter" placeholder="https://twitter.com/yourhandle">
+                    </div>
+
+                    <div class="form-group">
+                        <label>LinkedIn URL</label>
+                        <input type="url" class="form-control" id="socialLinkedin" placeholder="https://linkedin.com/company/yourcompany">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Instagram URL</label>
+                        <input type="url" class="form-control" id="socialInstagram" placeholder="https://instagram.com/yourhandle">
+                    </div>
+
+                    <button class="btn-save" onclick="saveSocialMedia()">
+                        <i class="fas fa-save"></i> Save Social Media
+                    </button>
+                    <div class="save-status" id="socialSaveStatus"></div>
+                </div>
+            </div>
+
             <!-- Content Editor -->
             <div class="page-content" id="contentEditorPage">
                 <div class="page-header">
@@ -775,77 +1368,239 @@
                     </button>
                 </div>
 
-                <!-- Hero Section -->
-                <div class="editor-section">
-                    <h3><i class="fas fa-home"></i> Hero Section</h3>
-                    <div class="form-group">
-                        <label>Main Heading</label>
-                        <input type="text" class="form-control" id="heroHeading" placeholder="Your Trusted IT Partner">
-                    </div>
-                    <div class="form-group">
-                        <label>Subheading</label>
-                        <textarea class="form-control" id="heroSubheading" placeholder="Custom-built computer systems, expert IT consulting..."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Call to Action Button Text</label>
-                        <input type="text" class="form-control" id="heroCTA" placeholder="Get Started">
-                    </div>
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                    <p style="color: #666; margin-bottom: 20px;">
+                        <i class="fas fa-info-circle" style="color: var(--primary);"></i> 
+                        Edit all hero page sections and contact information. Each section saves individually and updates the website immediately. 
+                        Contact information syncs with "Let's Start a Conversation" section automatically.
+                    </p>
                 </div>
 
-                <!-- Contact Information -->
-                <div class="editor-section">
-                    <h3><i class="fas fa-address-book"></i> Contact Information</h3>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Phone Number</label>
-                            <input type="tel" class="form-control" id="contactPhone" placeholder="1300 CYBER IT">
+                <!-- Hero Section - Main Content -->
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 20px; color: var(--primary);">
+                        <i class="fas fa-home"></i> Hero Section - Main Content
+                    </h3>
+
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                            <i class="fas fa-heading"></i> Main Heading
+                        </label>
+                        <input type="text" id="contentHeroHeading" value="Your Trusted IT Partner in Melbourne" 
+                               style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; font-size: 18px; font-weight: bold; margin-bottom: 10px;">
+                        <p style="color: #666; font-size: 14px; margin: 0;">This is the large text at the top of your homepage</p>
+                    </div>
+
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                            <i class="fas fa-align-left"></i> Subheading / Description
+                        </label>
+                        <textarea id="contentHeroSubheading" rows="3" 
+                                  style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 10px;">Custom-built computer systems, expert IT consulting, and comprehensive technical support for businesses and individuals across Melbourne.</textarea>
+                        <p style="color: #666; font-size: 14px; margin: 0;">Supporting text under the main heading</p>
+                    </div>
+
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                            <i class="fas fa-mouse-pointer"></i> Primary Button Text
+                        </label>
+                        <input type="text" id="contentHeroPrimaryBtn" value="Get Started" 
+                               style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 10px;">
+                        <p style="color: #666; font-size: 14px; margin: 0;">Text for the main call-to-action button</p>
+                    </div>
+
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                            <i class="fas fa-link"></i> Primary Button Link
+                        </label>
+                        <input type="text" id="contentHeroPrimaryLink" value="#contact" 
+                               style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 10px;">
+                        <p style="color: #666; font-size: 14px; margin: 0;">Where the button goes (e.g., #contact, #services, or external URL)</p>
+                    </div>
+
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                            <i class="fas fa-mouse-pointer"></i> Secondary Button Text
+                        </label>
+                        <input type="text" id="contentHeroSecondaryBtn" value="Learn More" 
+                               style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 10px;">
+                        <p style="color: #666; font-size: 14px; margin: 0;">Text for the secondary button</p>
+                    </div>
+
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                            <i class="fas fa-link"></i> Secondary Button Link
+                        </label>
+                        <input type="text" id="contentHeroSecondaryLink" value="#services" 
+                               style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 10px;">
+                        <p style="color: #666; font-size: 14px; margin: 0;">Where the secondary button goes</p>
+                    </div>
+
+                    <button class="btn btn-primary" onclick="saveContentSection('heroMain')" style="width: 100%;">
+                        <i class="fas fa-save"></i> Save Hero Section
+                    </button>
+                </div>
+
+                <!-- Contact Information Section (Syncs with Let's Start a Conversation) -->
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 20px; color: var(--primary);">
+                        <i class="fas fa-address-card"></i> Contact Information
+                    </h3>
+                    <div style="background: #e7f3ff; padding: 15px; border-left: 4px solid #2196F3; border-radius: 4px; margin-bottom: 20px;">
+                        <p style="margin: 0; color: #2196F3;">
+                            <i class="fas fa-sync-alt"></i> <strong>Auto-Sync:</strong> These fields automatically update the "Let's Start a Conversation" section on your website.
+                        </p>
+                    </div>
+
+                    <div class="form-row" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                        <div style="padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                            <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                                <i class="fas fa-phone"></i> Phone Number
+                            </label>
+                            <input type="tel" id="contentContactPhone" value="(03) 9876 5432" 
+                                   style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
+                            <button class="btn btn-primary" onclick="saveContentSection('contactPhone')" style="width: 100%;">
+                                <i class="fas fa-save"></i> Save Phone
+                            </button>
                         </div>
-                        <div class="form-group">
-                            <label>Email Address</label>
-                            <input type="email" class="form-control" id="contactEmail" placeholder="info@cyberlogicit.com.au">
+
+                        <div style="padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                            <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                                <i class="fas fa-envelope"></i> Email Address
+                            </label>
+                            <input type="email" id="contentContactEmail" value="support@cyberlogicit.com.au" 
+                                   style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
+                            <button class="btn btn-primary" onclick="saveContentSection('contactEmail')" style="width: 100%;">
+                                <i class="fas fa-save"></i> Save Email
+                            </button>
+                        </div>
+
+                        <div style="padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                            <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                                <i class="fas fa-map-marker-alt"></i> Business Address
+                            </label>
+                            <input type="text" id="contentContactAddress" value="Melbourne, Victoria, Australia" 
+                                   style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
+                            <button class="btn btn-primary" onclick="saveContentSection('contactAddress')" style="width: 100%;">
+                                <i class="fas fa-save"></i> Save Address
+                            </button>
+                        </div>
+
+                        <div style="padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                            <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                                <i class="fas fa-clock"></i> Business Hours
+                            </label>
+                            <input type="text" id="contentContactHours" value="Mon-Fri: 9AM-6PM" 
+                                   style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
+                            <button class="btn btn-primary" onclick="saveContentSection('contactHours')" style="width: 100%;">
+                                <i class="fas fa-save"></i> Save Hours
+                            </button>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>Business Address</label>
-                        <input type="text" class="form-control" id="contactAddress" placeholder="Melbourne, Victoria, AU">
+                </div>
+
+                <!-- Let's Start a Conversation Section -->
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 20px; color: var(--primary);">
+                        <i class="fas fa-comments"></i> "Let's Start a Conversation" Section
+                    </h3>
+
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                            <i class="fas fa-heading"></i> Section Heading
+                        </label>
+                        <input type="text" id="contentConversationHeading" value="Let's Start a Conversation" 
+                               style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 10px;">
+                        <p style="color: #666; font-size: 14px; margin: 0;">Main heading for the contact section</p>
+                    </div>
+
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                            <i class="fas fa-align-left"></i> Section Description
+                        </label>
+                        <textarea id="contentConversationDesc" rows="2" 
+                                  style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 10px;">Have questions or need IT support? We're here to help! Reach out to discuss your requirements.</textarea>
+                        <p style="color: #666; font-size: 14px; margin: 0;">Description text under the heading</p>
+                    </div>
+
+                    <button class="btn btn-primary" onclick="saveContentSection('conversation')" style="width: 100%;">
+                        <i class="fas fa-save"></i> Save Conversation Section
+                    </button>
+
+                    <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 4px;">
+                        <p style="margin: 0; color: #856404;">
+                            <i class="fas fa-lightbulb"></i> <strong>Note:</strong> Phone, Email, Address, and Hours display below this section and are managed in the Contact Information fields above.
+                        </p>
                     </div>
                 </div>
 
-                <!-- Services -->
-                <div class="editor-section">
-                    <h3><i class="fas fa-briefcase"></i> Services (First 3)</h3>
-                    <div class="form-group">
-                        <label>Service 1 Title</label>
-                        <input type="text" class="form-control" id="service1Title" placeholder="Custom Computer Systems">
-                    </div>
-                    <div class="form-group">
-                        <label>Service 1 Description</label>
-                        <textarea class="form-control" id="service1Desc"></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Service 2 Title</label>
-                        <input type="text" class="form-control" id="service2Title" placeholder="IT Consulting">
-                    </div>
-                    <div class="form-group">
-                        <label>Service 2 Description</label>
-                        <textarea class="form-control" id="service2Desc"></textarea>
+                <!-- About Section Content -->
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 20px; color: var(--primary);">
+                        <i class="fas fa-info-circle"></i> About Section Content
+                    </h3>
+
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                            <i class="fas fa-heading"></i> About Section Heading
+                        </label>
+                        <input type="text" id="contentAboutHeading" value="About Cyberlogic IT" 
+                               style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 10px;">
                     </div>
 
-                    <div class="form-group">
-                        <label>Service 3 Title</label>
-                        <input type="text" class="form-control" id="service3Title" placeholder="Network Solutions">
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                            <i class="fas fa-paragraph"></i> About Description (Paragraph 1)
+                        </label>
+                        <textarea id="contentAboutPara1" rows="3" 
+                                  style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px;">With over 15 years of experience in the IT industry, Cyberlogic IT has been Melbourne's trusted partner for custom computer systems and comprehensive IT solutions.</textarea>
                     </div>
-                    <div class="form-group">
-                        <label>Service 3 Description</label>
-                        <textarea class="form-control" id="service3Desc"></textarea>
+
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                            <i class="fas fa-paragraph"></i> About Description (Paragraph 2)
+                        </label>
+                        <textarea id="contentAboutPara2" rows="3" 
+                                  style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px;">We specialize in building high-performance custom PCs, providing expert IT consulting, and delivering reliable technical support to help your business thrive in the digital age.</textarea>
                     </div>
+
+                    <button class="btn btn-primary" onclick="saveContentSection('about')" style="width: 100%;">
+                        <i class="fas fa-save"></i> Save About Section
+                    </button>
                 </div>
 
-                <button class="btn-save" onclick="saveContent()">
-                    <i class="fas fa-save"></i> Save All Changes
-                </button>
-                <div class="save-status" id="saveStatus"></div>
+                <!-- Services Section Header -->
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 20px; color: var(--primary);">
+                        <i class="fas fa-cogs"></i> Services Section Header
+                    </h3>
+
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                            <i class="fas fa-heading"></i> Services Section Heading
+                        </label>
+                        <input type="text" id="contentServicesHeading" value="Our Services" 
+                               style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 10px;">
+                    </div>
+
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                            <i class="fas fa-align-left"></i> Services Section Description
+                        </label>
+                        <textarea id="contentServicesDesc" rows="2" 
+                                  style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px;">Comprehensive IT solutions tailored to your needs. From custom-built systems to enterprise support.</textarea>
+                    </div>
+
+                    <button class="btn btn-primary" onclick="saveContentSection('servicesHeader')" style="width: 100%;">
+                        <i class="fas fa-save"></i> Save Services Header
+                    </button>
+
+                    <div style="margin-top: 20px; padding: 15px; background: #e7f3ff; border-left: 4px solid #2196F3; border-radius: 4px;">
+                        <p style="margin: 0; color: #2196F3;">
+                            <i class="fas fa-info-circle"></i> <strong>Tip:</strong> Individual services are managed in the "Services Manager" section.
+                        </p>
+                    </div>
+                </div>
             </div>
 
             <!-- Image Upload -->
@@ -1793,6 +2548,15 @@
             // Show selected page
             if (pageName === 'dashboard') {
                 document.getElementById('dashboardPage').classList.add('active');
+            } else if (pageName === 'statisticsEditor') {
+                document.getElementById('statisticsEditorPage').classList.add('active');
+                loadStatistics();
+            } else if (pageName === 'servicesEditor') {
+                document.getElementById('servicesEditorPage').classList.add('active');
+                loadServices();
+            } else if (pageName === 'headerFooterEditor') {
+                document.getElementById('headerFooterEditorPage').classList.add('active');
+                loadHeaderFooter();
             } else if (pageName === 'contentEditor') {
                 document.getElementById('contentEditorPage').classList.add('active');
                 loadContentData();
@@ -3246,6 +4010,523 @@ Resent by Admin: ${new Date().toLocaleString('en-AU')}
                 localStorage.setItem('contactSubmissions', JSON.stringify(submissions));
                 loadContactSubmissions();
             }
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // STATISTICS MANAGER
+        // ═══════════════════════════════════════════════════════════════
+
+        function loadStatistics() {
+            const stats = JSON.parse(localStorage.getItem('websiteStatistics') || '{"stat1":{"number":"15","label":"Years Experience"},"stat2":{"number":"500","label":"Projects Completed"},"stat3":{"number":"200","label":"Happy Clients"},"stat4":{"number":"24","label":"24/7 Support"}}');
+            
+            document.getElementById('stat1Number').value = stats.stat1.number;
+            document.getElementById('stat1Label').value = stats.stat1.label;
+            document.getElementById('stat2Number').value = stats.stat2.number;
+            document.getElementById('stat2Label').value = stats.stat2.label;
+            document.getElementById('stat3Number').value = stats.stat3.number;
+            document.getElementById('stat3Label').value = stats.stat3.label;
+            document.getElementById('stat4Number').value = stats.stat4.number;
+            document.getElementById('stat4Label').value = stats.stat4.label;
+        }
+
+        function saveStatistic(statKey) {
+            const stats = JSON.parse(localStorage.getItem('websiteStatistics') || '{}');
+            stats[statKey] = {
+                number: document.getElementById(statKey + 'Number').value,
+                label: document.getElementById(statKey + 'Label').value
+            };
+            localStorage.setItem('websiteStatistics', JSON.stringify(stats));
+            
+            showNotification('✓ Statistic saved successfully!', 'success');
+            const statusEl = document.getElementById('statsSaveStatus');
+            statusEl.innerHTML = '<i class="fas fa-check-circle"></i> Saved!';
+            statusEl.style.color = '#28a745';
+            setTimeout(() => statusEl.innerHTML = '', 3000);
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // SERVICES MANAGER
+        // ═══════════════════════════════════════════════════════════════
+
+        function loadServices() {
+            const services = JSON.parse(localStorage.getItem('websiteServices') || '{}');
+            
+            for (let i = 1; i <= 6; i++) {
+                const service = services['service' + i] || {};
+                const titleEl = document.getElementById('service' + i + 'TitleEdit');
+                const descEl = document.getElementById('service' + i + 'DescEdit');
+                const iconEl = document.getElementById('service' + i + 'Icon');
+                
+                if (titleEl) titleEl.value = service.title || '';
+                if (descEl) descEl.value = service.description || '';
+                if (iconEl) iconEl.value = service.icon || 'fas fa-cog';
+            }
+        }
+
+        function saveService(serviceKey) {
+            const services = JSON.parse(localStorage.getItem('websiteServices') || '{}');
+            services[serviceKey] = {
+                title: document.getElementById(serviceKey + 'TitleEdit').value,
+                description: document.getElementById(serviceKey + 'DescEdit').value,
+                icon: document.getElementById(serviceKey + 'Icon').value
+            };
+            localStorage.setItem('websiteServices', JSON.stringify(services));
+            
+            showNotification('✓ Service saved successfully!', 'success');
+            const statusEl = document.getElementById(serviceKey + 'SaveStatus');
+            statusEl.innerHTML = '<i class="fas fa-check-circle"></i> Service saved! Changes will appear on website.';
+            statusEl.style.color = '#28a745';
+            setTimeout(() => statusEl.innerHTML = '', 3000);
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // HEADER & FOOTER MANAGER
+        // ═══════════════════════════════════════════════════════════════
+
+        function loadHeaderFooter() {
+            const headerFooter = JSON.parse(localStorage.getItem('websiteHeaderFooter') || '{}');
+            
+            // Navigation
+            const nav = headerFooter.navigation || {};
+            for (let i = 1; i <= 4; i++) {
+                const item = nav['item' + i] || {};
+                const textEl = document.getElementById('nav' + i + 'Text');
+                const linkEl = document.getElementById('nav' + i + 'Link');
+                if (textEl) textEl.value = item.text || '';
+                if (linkEl) linkEl.value = item.link || '';
+            }
+            
+            // Footer Content
+            const footer = headerFooter.footer || {};
+            if (document.getElementById('footerCompany')) document.getElementById('footerCompany').value = footer.company || '';
+            if (document.getElementById('footerTagline')) document.getElementById('footerTagline').value = footer.tagline || '';
+            if (document.getElementById('footerDesc')) document.getElementById('footerDesc').value = footer.description || '';
+            if (document.getElementById('footerCopyright')) document.getElementById('footerCopyright').value = footer.copyright || '';
+            if (document.getElementById('footerPhone')) document.getElementById('footerPhone').value = footer.phone || '';
+            if (document.getElementById('footerEmail')) document.getElementById('footerEmail').value = footer.email || '';
+            if (document.getElementById('footerAddress')) document.getElementById('footerAddress').value = footer.address || '';
+            if (document.getElementById('footerHours')) document.getElementById('footerHours').value = footer.hours || '';
+            
+            // Social Media
+            const social = headerFooter.social || {};
+            if (document.getElementById('socialFacebook')) document.getElementById('socialFacebook').value = social.facebook || '';
+            if (document.getElementById('socialTwitter')) document.getElementById('socialTwitter').value = social.twitter || '';
+            if (document.getElementById('socialLinkedin')) document.getElementById('socialLinkedin').value = social.linkedin || '';
+            if (document.getElementById('socialInstagram')) document.getElementById('socialInstagram').value = social.instagram || '';
+        }
+
+        function saveNavigation() {
+            const headerFooter = JSON.parse(localStorage.getItem('websiteHeaderFooter') || '{}');
+            headerFooter.navigation = {};
+            
+            for (let i = 1; i <= 4; i++) {
+                headerFooter.navigation['item' + i] = {
+                    text: document.getElementById('nav' + i + 'Text').value,
+                    link: document.getElementById('nav' + i + 'Link').value
+                };
+            }
+            
+            localStorage.setItem('websiteHeaderFooter', JSON.stringify(headerFooter));
+            showNotification('✓ Navigation saved successfully!', 'success');
+            const statusEl = document.getElementById('navSaveStatus');
+            statusEl.innerHTML = '<i class="fas fa-check-circle"></i> Navigation saved!';
+            statusEl.style.color = '#28a745';
+            setTimeout(() => statusEl.innerHTML = '', 3000);
+        }
+
+        function saveFooterContent() {
+            const headerFooter = JSON.parse(localStorage.getItem('websiteHeaderFooter') || '{}');
+            if (!headerFooter.footer) headerFooter.footer = {};
+            
+            headerFooter.footer.company = document.getElementById('footerCompany').value;
+            headerFooter.footer.tagline = document.getElementById('footerTagline').value;
+            headerFooter.footer.description = document.getElementById('footerDesc').value;
+            headerFooter.footer.copyright = document.getElementById('footerCopyright').value;
+            
+            localStorage.setItem('websiteHeaderFooter', JSON.stringify(headerFooter));
+            showNotification('✓ Footer content saved successfully!', 'success');
+            const statusEl = document.getElementById('footerContentSaveStatus');
+            statusEl.innerHTML = '<i class="fas fa-check-circle"></i> Footer content saved!';
+            statusEl.style.color = '#28a745';
+            setTimeout(() => statusEl.innerHTML = '', 3000);
+        }
+
+        function saveFooterContact() {
+            const headerFooter = JSON.parse(localStorage.getItem('websiteHeaderFooter') || '{}');
+            if (!headerFooter.footer) headerFooter.footer = {};
+            
+            headerFooter.footer.phone = document.getElementById('footerPhone').value;
+            headerFooter.footer.email = document.getElementById('footerEmail').value;
+            headerFooter.footer.address = document.getElementById('footerAddress').value;
+            headerFooter.footer.hours = document.getElementById('footerHours').value;
+            
+            localStorage.setItem('websiteHeaderFooter', JSON.stringify(headerFooter));
+            showNotification('✓ Contact information saved successfully!', 'success');
+            const statusEl = document.getElementById('footerContactSaveStatus');
+            statusEl.innerHTML = '<i class="fas fa-check-circle"></i> Contact info saved!';
+            statusEl.style.color = '#28a745';
+            setTimeout(() => statusEl.innerHTML = '', 3000);
+        }
+
+        function saveSocialMedia() {
+            const headerFooter = JSON.parse(localStorage.getItem('websiteHeaderFooter') || '{}');
+            headerFooter.social = {
+                facebook: document.getElementById('socialFacebook').value,
+                twitter: document.getElementById('socialTwitter').value,
+                linkedin: document.getElementById('socialLinkedin').value,
+                instagram: document.getElementById('socialInstagram').value
+            };
+            
+            localStorage.setItem('websiteHeaderFooter', JSON.stringify(headerFooter));
+            showNotification('✓ Social media links saved successfully!', 'success');
+            const statusEl = document.getElementById('socialSaveStatus');
+            statusEl.innerHTML = '<i class="fas fa-check-circle"></i> Social media saved!';
+            statusEl.style.color = '#28a745';
+            setTimeout(() => statusEl.innerHTML = '', 3000);
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // STATISTICS MANAGER
+        // ═══════════════════════════════════════════════════════════
+
+        function loadStatistics() {
+            const stats = JSON.parse(localStorage.getItem('websiteStatistics') || '{"yearsExperience": 15, "projectsCompleted": 500, "happyClients": 350, "supportHours": "24/7"}');
+            document.getElementById('statYearsExperience').value = stats.yearsExperience || 15;
+            document.getElementById('statProjectsCompleted').value = stats.projectsCompleted || 500;
+            document.getElementById('statHappyClients').value = stats.happyClients || 350;
+            document.getElementById('statSupportHours').value = stats.supportHours || '24/7';
+        }
+
+        function saveStatistic(statName) {
+            const stats = JSON.parse(localStorage.getItem('websiteStatistics') || '{}');
+            
+            let value, displayName;
+            switch(statName) {
+                case 'yearsExperience':
+                    value = document.getElementById('statYearsExperience').value;
+                    displayName = 'Years Experience';
+                    break;
+                case 'projectsCompleted':
+                    value = document.getElementById('statProjectsCompleted').value;
+                    displayName = 'Projects Completed';
+                    break;
+                case 'happyClients':
+                    value = document.getElementById('statHappyClients').value;
+                    displayName = 'Happy Clients';
+                    break;
+                case 'supportHours':
+                    value = document.getElementById('statSupportHours').value;
+                    displayName = 'Support Hours';
+                    break;
+            }
+            
+            stats[statName] = value;
+            localStorage.setItem('websiteStatistics', JSON.stringify(stats));
+            
+            showNotification(`✓ ${displayName} saved successfully! Changes are now live on your website.`, 'success');
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // SERVICES MANAGER
+        // ═══════════════════════════════════════════════════════════
+
+        function loadServices() {
+            const services = JSON.parse(localStorage.getItem('websiteServices') || JSON.stringify(getDefaultServices()));
+            const servicesList = document.getElementById('servicesList');
+            
+            servicesList.innerHTML = services.map((service, index) => `
+                <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid var(--primary);">
+                    <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 20px;">
+                        <h4 style="margin: 0; color: var(--primary);">
+                            <i class="fas fa-${service.icon}"></i> Service ${index + 1}
+                        </h4>
+                        <button class="btn" onclick="deleteService(${index})" style="background: var(--danger); padding: 8px 15px;">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Service Title:</label>
+                        <input type="text" id="serviceTitle${index}" value="${service.title}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Description:</label>
+                        <textarea id="serviceDesc${index}" rows="3" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">${service.description}</textarea>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Icon (Font Awesome class):</label>
+                        <input type="text" id="serviceIcon${index}" value="${service.icon}" placeholder="cogs, laptop, shield-alt, etc." style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="saveService(${index})" style="width: 100%;">
+                        <i class="fas fa-save"></i> Save This Service
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function getDefaultServices() {
+            return [
+                {
+                    title: "Custom Computer Systems",
+                    description: "Tailored PC builds for gaming, workstations, and business needs with expert component selection.",
+                    icon: "desktop"
+                },
+                {
+                    title: "IT Consulting",
+                    description: "Professional advice on technology strategy, infrastructure planning, and digital transformation.",
+                    icon: "laptop-code"
+                },
+                {
+                    title: "Network Setup & Security",
+                    description: "Secure network infrastructure design, implementation, and ongoing security management.",
+                    icon: "network-wired"
+                },
+                {
+                    title: "Hardware Repair & Upgrades",
+                    description: "Expert diagnosis and repair services plus performance upgrades for all types of systems.",
+                    icon: "tools"
+                },
+                {
+                    title: "Cloud Solutions",
+                    description: "Cloud migration, setup, and management for Microsoft Azure, AWS, and Google Cloud.",
+                    icon: "cloud"
+                },
+                {
+                    title: "24/7 Technical Support",
+                    description: "Round-the-clock support for your business with rapid response times and remote assistance.",
+                    icon: "headset"
+                }
+            ];
+        }
+
+        function saveService(index) {
+            const services = JSON.parse(localStorage.getItem('websiteServices') || JSON.stringify(getDefaultServices()));
+            
+            services[index] = {
+                title: document.getElementById(`serviceTitle${index}`).value,
+                description: document.getElementById(`serviceDesc${index}`).value,
+                icon: document.getElementById(`serviceIcon${index}`).value
+            };
+            
+            localStorage.setItem('websiteServices', JSON.stringify(services));
+            showNotification(`✓ Service "${services[index].title}" saved successfully!`, 'success');
+        }
+
+        function addNewService() {
+            const services = JSON.parse(localStorage.getItem('websiteServices') || JSON.stringify(getDefaultServices()));
+            services.push({
+                title: "New Service",
+                description: "Enter service description here",
+                icon: "cog"
+            });
+            localStorage.setItem('websiteServices', JSON.stringify(services));
+            loadServices();
+            showNotification('✓ New service added! Edit the details and save.', 'success');
+        }
+
+        function deleteService(index) {
+            if (!confirm('Are you sure you want to delete this service?')) return;
+            
+            const services = JSON.parse(localStorage.getItem('websiteServices') || JSON.stringify(getDefaultServices()));
+            services.splice(index, 1);
+            localStorage.setItem('websiteServices', JSON.stringify(services));
+            loadServices();
+            showNotification('✓ Service deleted successfully!', 'success');
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // HEADER & FOOTER MANAGER
+        // ═══════════════════════════════════════════════════════════
+
+        function loadHeaderFooter() {
+            const data = JSON.parse(localStorage.getItem('websiteHeaderFooter') || JSON.stringify(getDefaultHeaderFooter()));
+            
+            document.getElementById('companyName').value = data.companyName || 'Cyberlogic IT';
+            document.getElementById('companyTagline').value = data.companyTagline || 'Custom Computer Systems & IT Consulting';
+            document.getElementById('contactEmail').value = data.contactEmail || 'support@cyberlogicit.com.au';
+            document.getElementById('contactPhone').value = data.contactPhone || '(03) 9876 5432';
+            document.getElementById('contactAddress').value = data.contactAddress || 'Melbourne, Victoria, Australia';
+            document.getElementById('socialFacebook').value = data.socialFacebook || '';
+            document.getElementById('socialTwitter').value = data.socialTwitter || '';
+            document.getElementById('socialLinkedIn').value = data.socialLinkedIn || '';
+        }
+
+        function getDefaultHeaderFooter() {
+            return {
+                companyName: 'Cyberlogic IT',
+                companyTagline: 'Custom Computer Systems & IT Consulting',
+                contactEmail: 'support@cyberlogicit.com.au',
+                contactPhone: '(03) 9876 5432',
+                contactAddress: 'Melbourne, Victoria, Australia',
+                socialFacebook: '',
+                socialTwitter: '',
+                socialLinkedIn: ''
+            };
+        }
+
+        function saveHeaderFooter(field) {
+            const data = JSON.parse(localStorage.getItem('websiteHeaderFooter') || JSON.stringify(getDefaultHeaderFooter()));
+            
+            let displayName;
+            switch(field) {
+                case 'companyName':
+                    data.companyName = document.getElementById('companyName').value;
+                    displayName = 'Company Name';
+                    break;
+                case 'companyTagline':
+                    data.companyTagline = document.getElementById('companyTagline').value;
+                    displayName = 'Tagline';
+                    break;
+                case 'contactEmail':
+                    data.contactEmail = document.getElementById('contactEmail').value;
+                    displayName = 'Email';
+                    break;
+                case 'contactPhone':
+                    data.contactPhone = document.getElementById('contactPhone').value;
+                    displayName = 'Phone';
+                    break;
+                case 'contactAddress':
+                    data.contactAddress = document.getElementById('contactAddress').value;
+                    displayName = 'Address';
+                    break;
+                case 'socialFacebook':
+                    data.socialFacebook = document.getElementById('socialFacebook').value;
+                    displayName = 'Facebook';
+                    break;
+                case 'socialTwitter':
+                    data.socialTwitter = document.getElementById('socialTwitter').value;
+                    displayName = 'Twitter';
+                    break;
+                case 'socialLinkedIn':
+                    data.socialLinkedIn = document.getElementById('socialLinkedIn').value;
+                    displayName = 'LinkedIn';
+                    break;
+            }
+            
+            localStorage.setItem('websiteHeaderFooter', JSON.stringify(data));
+            showNotification(`✓ ${displayName} saved successfully! Changes are now live.`, 'success');
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // CONTENT EDITOR (with auto-sync to Let's Start a Conversation)
+        // ═══════════════════════════════════════════════════════════
+
+        function loadContentData() {
+            const content = JSON.parse(localStorage.getItem('websiteContent') || JSON.stringify(getDefaultContent()));
+            const headerFooter = JSON.parse(localStorage.getItem('websiteHeaderFooter') || JSON.stringify(getDefaultHeaderFooter()));
+            
+            // Hero Section
+            document.getElementById('contentHeroHeading').value = content.heroHeading || 'Your Trusted IT Partner in Melbourne';
+            document.getElementById('contentHeroSubheading').value = content.heroSubheading || 'Custom-built computer systems, expert IT consulting, and comprehensive technical support for businesses and individuals across Melbourne.';
+            document.getElementById('contentHeroPrimaryBtn').value = content.heroPrimaryBtn || 'Get Started';
+            document.getElementById('contentHeroPrimaryLink').value = content.heroPrimaryLink || '#contact';
+            document.getElementById('contentHeroSecondaryBtn').value = content.heroSecondaryBtn || 'Learn More';
+            document.getElementById('contentHeroSecondaryLink').value = content.heroSecondaryLink || '#services';
+            
+            // Contact Info (sync with header/footer)
+            document.getElementById('contentContactPhone').value = headerFooter.contactPhone || '(03) 9876 5432';
+            document.getElementById('contentContactEmail').value = headerFooter.contactEmail || 'support@cyberlogicit.com.au';
+            document.getElementById('contentContactAddress').value = headerFooter.contactAddress || 'Melbourne, Victoria, Australia';
+            document.getElementById('contentContactHours').value = content.contactHours || 'Mon-Fri: 9AM-6PM';
+            
+            // Conversation Section
+            document.getElementById('contentConversationHeading').value = content.conversationHeading || "Let's Start a Conversation";
+            document.getElementById('contentConversationDesc').value = content.conversationDesc || "Have questions or need IT support? We're here to help! Reach out to discuss your requirements.";
+            
+            // About Section
+            document.getElementById('contentAboutHeading').value = content.aboutHeading || 'About Cyberlogic IT';
+            document.getElementById('contentAboutPara1').value = content.aboutPara1 || "With over 15 years of experience in the IT industry, Cyberlogic IT has been Melbourne's trusted partner for custom computer systems and comprehensive IT solutions.";
+            document.getElementById('contentAboutPara2').value = content.aboutPara2 || "We specialize in building high-performance custom PCs, providing expert IT consulting, and delivering reliable technical support to help your business thrive in the digital age.";
+            
+            // Services Header
+            document.getElementById('contentServicesHeading').value = content.servicesHeading || 'Our Services';
+            document.getElementById('contentServicesDesc').value = content.servicesDesc || 'Comprehensive IT solutions tailored to your needs. From custom-built systems to enterprise support.';
+        }
+
+        function getDefaultContent() {
+            return {
+                heroHeading: 'Your Trusted IT Partner in Melbourne',
+                heroSubheading: 'Custom-built computer systems, expert IT consulting, and comprehensive technical support for businesses and individuals across Melbourne.',
+                heroPrimaryBtn: 'Get Started',
+                heroPrimaryLink: '#contact',
+                heroSecondaryBtn: 'Learn More',
+                heroSecondaryLink: '#services',
+                contactHours: 'Mon-Fri: 9AM-6PM',
+                conversationHeading: "Let's Start a Conversation",
+                conversationDesc: "Have questions or need IT support? We're here to help! Reach out to discuss your requirements.",
+                aboutHeading: 'About Cyberlogic IT',
+                aboutPara1: "With over 15 years of experience in the IT industry, Cyberlogic IT has been Melbourne's trusted partner for custom computer systems and comprehensive IT solutions.",
+                aboutPara2: "We specialize in building high-performance custom PCs, providing expert IT consulting, and delivering reliable technical support to help your business thrive in the digital age.",
+                servicesHeading: 'Our Services',
+                servicesDesc: 'Comprehensive IT solutions tailored to your needs. From custom-built systems to enterprise support.'
+            };
+        }
+
+        function saveContentSection(section) {
+            const content = JSON.parse(localStorage.getItem('websiteContent') || JSON.stringify(getDefaultContent()));
+            const headerFooter = JSON.parse(localStorage.getItem('websiteHeaderFooter') || JSON.stringify(getDefaultHeaderFooter()));
+            
+            let displayName = '';
+            
+            switch(section) {
+                case 'heroMain':
+                    content.heroHeading = document.getElementById('contentHeroHeading').value;
+                    content.heroSubheading = document.getElementById('contentHeroSubheading').value;
+                    content.heroPrimaryBtn = document.getElementById('contentHeroPrimaryBtn').value;
+                    content.heroPrimaryLink = document.getElementById('contentHeroPrimaryLink').value;
+                    content.heroSecondaryBtn = document.getElementById('contentHeroSecondaryBtn').value;
+                    content.heroSecondaryLink = document.getElementById('contentHeroSecondaryLink').value;
+                    displayName = 'Hero Section';
+                    break;
+                    
+                case 'contactPhone':
+                    headerFooter.contactPhone = document.getElementById('contentContactPhone').value;
+                    localStorage.setItem('websiteHeaderFooter', JSON.stringify(headerFooter));
+                    displayName = 'Phone Number (synced to Let\'s Start a Conversation)';
+                    break;
+                    
+                case 'contactEmail':
+                    headerFooter.contactEmail = document.getElementById('contentContactEmail').value;
+                    localStorage.setItem('websiteHeaderFooter', JSON.stringify(headerFooter));
+                    displayName = 'Email Address (synced to Let\'s Start a Conversation)';
+                    break;
+                    
+                case 'contactAddress':
+                    headerFooter.contactAddress = document.getElementById('contentContactAddress').value;
+                    localStorage.setItem('websiteHeaderFooter', JSON.stringify(headerFooter));
+                    displayName = 'Address (synced to Let\'s Start a Conversation)';
+                    break;
+                    
+                case 'contactHours':
+                    content.contactHours = document.getElementById('contentContactHours').value;
+                    displayName = 'Business Hours (synced to Let\'s Start a Conversation)';
+                    break;
+                    
+                case 'conversation':
+                    content.conversationHeading = document.getElementById('contentConversationHeading').value;
+                    content.conversationDesc = document.getElementById('contentConversationDesc').value;
+                    displayName = 'Conversation Section';
+                    break;
+                    
+                case 'about':
+                    content.aboutHeading = document.getElementById('contentAboutHeading').value;
+                    content.aboutPara1 = document.getElementById('contentAboutPara1').value;
+                    content.aboutPara2 = document.getElementById('contentAboutPara2').value;
+                    displayName = 'About Section';
+                    break;
+                    
+                case 'servicesHeader':
+                    content.servicesHeading = document.getElementById('contentServicesHeading').value;
+                    content.servicesDesc = document.getElementById('contentServicesDesc').value;
+                    displayName = 'Services Header';
+                    break;
+            }
+            
+            localStorage.setItem('websiteContent', JSON.stringify(content));
+            showNotification(`✓ ${displayName} saved successfully! Changes are now live on your website.`, 'success');
         }
 
         // Check if already logged in
