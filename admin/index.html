@@ -657,6 +657,36 @@
                         <p>Analyze SEO, check rankings, generate keywords, and improve search visibility.</p>
                     </div>
 
+                    <div class="dashboard-card" onclick="showPage('faqEditor')">
+                        <i class="fas fa-question-circle"></i>
+                        <h3>FAQ Manager</h3>
+                        <p>Add, edit, or remove frequently asked questions. Individual save per FAQ item.</p>
+                    </div>
+
+                    <div class="dashboard-card" onclick="showPage('processEditor')">
+                        <i class="fas fa-tasks"></i>
+                        <h3>Our Process</h3>
+                        <p>Update process steps and workflow descriptions shown on your website.</p>
+                    </div>
+
+                    <div class="dashboard-card" onclick="showPage('whyChooseEditor')">
+                        <i class="fas fa-star"></i>
+                        <h3>Why Choose Us</h3>
+                        <p>Update reasons why clients should choose your services. Add or remove benefits.</p>
+                    </div>
+
+                    <div class="dashboard-card" onclick="showPage('industriesEditor')">
+                        <i class="fas fa-industry"></i>
+                        <h3>Industries We Serve</h3>
+                        <p>Update industries and sectors you provide services to.</p>
+                    </div>
+
+                    <div class="dashboard-card" onclick="showPage('aboutEditor')">
+                        <i class="fas fa-info-circle"></i>
+                        <h3>About Us</h3>
+                        <p>Update your company story, mission, vision, and team information.</p>
+                    </div>
+
                     <div class="dashboard-card" onclick="showPage('userManagement')">
                         <i class="fas fa-users"></i>
                         <h3>User Management</h3>
@@ -884,6 +914,191 @@
                                 <i class="fas fa-save"></i> Save LinkedIn
                             </button>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Manager -->
+            <div class="page-content" id="faqEditorPage">
+                <div class="page-header">
+                    <h2>FAQ Manager</h2>
+                    <button class="btn-back" onclick="showPage('dashboard')">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </button>
+                </div>
+
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 20px; color: var(--primary);">
+                        <i class="fas fa-question-circle"></i> Frequently Asked Questions
+                    </h3>
+                    <p style="color: #666; margin-bottom: 20px;">Add, edit, or remove FAQ items. Each FAQ saves individually.</p>
+                    
+                    <button class="btn btn-primary" onclick="addNewFAQ()" style="margin-bottom: 20px;">
+                        <i class="fas fa-plus"></i> Add New FAQ
+                    </button>
+
+                    <div id="faqList">
+                        <!-- FAQs will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Our Process Editor -->
+            <div class="page-content" id="processEditorPage">
+                <div class="page-header">
+                    <h2>Our Process Manager</h2>
+                    <button class="btn-back" onclick="showPage('dashboard')">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </button>
+                </div>
+
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 20px; color: var(--primary);">
+                        <i class="fas fa-tasks"></i> Our Process Steps
+                    </h3>
+                    <p style="color: #666; margin-bottom: 20px;">Update your workflow process steps. Each step saves individually.</p>
+                    
+                    <button class="btn btn-primary" onclick="addNewProcessStep()" style="margin-bottom: 20px;">
+                        <i class="fas fa-plus"></i> Add New Step
+                    </button>
+
+                    <div id="processList">
+                        <!-- Process steps will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Choose Us Editor -->
+            <div class="page-content" id="whyChooseEditorPage">
+                <div class="page-header">
+                    <h2>Why Choose Us Manager</h2>
+                    <button class="btn-back" onclick="showPage('dashboard')">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </button>
+                </div>
+
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 20px; color: var(--primary);">
+                        <i class="fas fa-star"></i> Why Choose Us Benefits
+                    </h3>
+                    <p style="color: #666; margin-bottom: 20px;">Update reasons why clients should choose you. Each benefit saves individually.</p>
+                    
+                    <button class="btn btn-primary" onclick="addNewBenefit()" style="margin-bottom: 20px;">
+                        <i class="fas fa-plus"></i> Add New Benefit
+                    </button>
+
+                    <div id="benefitsList">
+                        <!-- Benefits will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Industries We Serve Editor -->
+            <div class="page-content" id="industriesEditorPage">
+                <div class="page-header">
+                    <h2>Industries We Serve Manager</h2>
+                    <button class="btn-back" onclick="showPage('dashboard')">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </button>
+                </div>
+
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 20px; color: var(--primary);">
+                        <i class="fas fa-industry"></i> Industries & Sectors
+                    </h3>
+                    <p style="color: #666; margin-bottom: 20px;">Update industries you serve. Each industry saves individually.</p>
+                    
+                    <button class="btn btn-primary" onclick="addNewIndustry()" style="margin-bottom: 20px;">
+                        <i class="fas fa-plus"></i> Add New Industry
+                    </button>
+
+                    <div id="industriesList">
+                        <!-- Industries will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Us Editor -->
+            <div class="page-content" id="aboutEditorPage">
+                <div class="page-header">
+                    <h2>About Us Manager</h2>
+                    <button class="btn-back" onclick="showPage('dashboard')">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </button>
+                </div>
+
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 20px; color: var(--primary);">
+                        <i class="fas fa-info-circle"></i> About Us Content
+                    </h3>
+
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                            <i class="fas fa-heading"></i> Company Name
+                        </label>
+                        <input type="text" id="aboutCompanyName" value="Cyberlogic IT" 
+                               style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
+                        <button class="btn btn-primary" onclick="saveAboutSection('companyName')" style="width: 100%;">
+                            <i class="fas fa-save"></i> Save Company Name
+                        </button>
+                    </div>
+
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                            <i class="fas fa-quote-left"></i> Company Tagline
+                        </label>
+                        <input type="text" id="aboutTagline" value="Your Trusted IT Partner in Melbourne" 
+                               style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
+                        <button class="btn btn-primary" onclick="saveAboutSection('tagline')" style="width: 100%;">
+                            <i class="fas fa-save"></i> Save Tagline
+                        </button>
+                    </div>
+
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                            <i class="fas fa-align-left"></i> Company Story
+                        </label>
+                        <textarea id="aboutStory" rows="5" 
+                                  style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">With over 15 years of experience in the IT industry, Cyberlogic IT has been Melbourne's trusted partner for custom computer systems and comprehensive IT solutions. We specialize in building high-performance custom PCs, providing expert IT consulting, and delivering reliable technical support to help your business thrive in the digital age.</textarea>
+                        <button class="btn btn-primary" onclick="saveAboutSection('story')" style="width: 100%;">
+                            <i class="fas fa-save"></i> Save Story
+                        </button>
+                    </div>
+
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                            <i class="fas fa-bullseye"></i> Mission Statement
+                        </label>
+                        <textarea id="aboutMission" rows="3" 
+                                  style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">To provide innovative, reliable, and customized IT solutions that empower businesses and individuals to achieve their goals through technology.</textarea>
+                        <button class="btn btn-primary" onclick="saveAboutSection('mission')" style="width: 100%;">
+                            <i class="fas fa-save"></i> Save Mission
+                        </button>
+                    </div>
+
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                            <i class="fas fa-eye"></i> Vision Statement
+                        </label>
+                        <textarea id="aboutVision" rows="3" 
+                                  style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">To be Melbourne's leading IT services provider, recognized for excellence, innovation, and customer satisfaction.</textarea>
+                        <button class="btn btn-primary" onclick="saveAboutSection('vision')" style="width: 100%;">
+                            <i class="fas fa-save"></i> Save Vision
+                        </button>
+                    </div>
+
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
+                            <i class="fas fa-heart"></i> Core Values
+                        </label>
+                        <textarea id="aboutValues" rows="4" 
+                                  style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">Excellence - We deliver quality in everything we do
+Integrity - We operate with honesty and transparency
+Innovation - We embrace new technologies and solutions
+Customer Focus - Your success is our priority</textarea>
+                        <button class="btn btn-primary" onclick="saveAboutSection('values')" style="width: 100%;">
+                            <i class="fas fa-save"></i> Save Values
+                        </button>
                     </div>
                 </div>
             </div>
@@ -2577,6 +2792,21 @@
             } else if (pageName === 'userManagement') {
                 document.getElementById('userManagementPage').classList.add('active');
                 loadUsers();
+            } else if (pageName === 'faqEditor') {
+                document.getElementById('faqEditorPage').classList.add('active');
+                loadFAQs();
+            } else if (pageName === 'processEditor') {
+                document.getElementById('processEditorPage').classList.add('active');
+                loadProcessSteps();
+            } else if (pageName === 'whyChooseEditor') {
+                document.getElementById('whyChooseEditorPage').classList.add('active');
+                loadBenefits();
+            } else if (pageName === 'industriesEditor') {
+                document.getElementById('industriesEditorPage').classList.add('active');
+                loadIndustries();
+            } else if (pageName === 'aboutEditor') {
+                document.getElementById('aboutEditorPage').classList.add('active');
+                loadAboutSection();
             }
         }
 
@@ -4527,6 +4757,367 @@ Resent by Admin: ${new Date().toLocaleString('en-AU')}
             
             localStorage.setItem('websiteContent', JSON.stringify(content));
             showNotification(`✓ ${displayName} saved successfully! Changes are now live on your website.`, 'success');
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // FAQ MANAGER
+        // ═══════════════════════════════════════════════════════════
+
+        function loadFAQs() {
+            const faqs = JSON.parse(localStorage.getItem('websiteFAQs') || JSON.stringify(getDefaultFAQs()));
+            const faqList = document.getElementById('faqList');
+            
+            faqList.innerHTML = faqs.map((faq, index) => `
+                <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid var(--primary);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h4 style="margin: 0; color: var(--primary);">
+                            <i class="fas fa-question-circle"></i> FAQ ${index + 1}
+                        </h4>
+                        <button class="btn" onclick="deleteFAQ(${index})" style="background: var(--danger); padding: 8px 15px;">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Question:</label>
+                        <input type="text" id="faqQuestion${index}" value="${faq.question}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Answer:</label>
+                        <textarea id="faqAnswer${index}" rows="3" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">${faq.answer}</textarea>
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="saveFAQ(${index})" style="width: 100%;">
+                        <i class="fas fa-save"></i> Save This FAQ
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function getDefaultFAQs() {
+            return [
+                {question: "What services do you offer?", answer: "We offer custom computer builds, IT consulting, network setup, hardware repairs, cloud solutions, and 24/7 technical support."},
+                {question: "How long does a custom build take?", answer: "Typically 5-7 business days from order confirmation to completion, depending on component availability."},
+                {question: "Do you provide support for businesses?", answer: "Yes! We offer comprehensive IT support packages for businesses of all sizes, including managed services and on-site support."}
+            ];
+        }
+
+        function saveFAQ(index) {
+            const faqs = JSON.parse(localStorage.getItem('websiteFAQs') || JSON.stringify(getDefaultFAQs()));
+            faqs[index] = {
+                question: document.getElementById(`faqQuestion${index}`).value,
+                answer: document.getElementById(`faqAnswer${index}`).value
+            };
+            localStorage.setItem('websiteFAQs', JSON.stringify(faqs));
+            showNotification('✓ FAQ saved successfully!', 'success');
+        }
+
+        function addNewFAQ() {
+            const faqs = JSON.parse(localStorage.getItem('websiteFAQs') || JSON.stringify(getDefaultFAQs()));
+            faqs.push({question: "New Question", answer: "Enter answer here"});
+            localStorage.setItem('websiteFAQs', JSON.stringify(faqs));
+            loadFAQs();
+            showNotification('✓ New FAQ added!', 'success');
+        }
+
+        function deleteFAQ(index) {
+            if (!confirm('Delete this FAQ?')) return;
+            const faqs = JSON.parse(localStorage.getItem('websiteFAQs') || JSON.stringify(getDefaultFAQs()));
+            faqs.splice(index, 1);
+            localStorage.setItem('websiteFAQs', JSON.stringify(faqs));
+            loadFAQs();
+            showNotification('✓ FAQ deleted!', 'success');
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // PROCESS MANAGER
+        // ═══════════════════════════════════════════════════════════
+
+        function loadProcessSteps() {
+            const steps = JSON.parse(localStorage.getItem('websiteProcess') || JSON.stringify(getDefaultProcess()));
+            const processList = document.getElementById('processList');
+            
+            processList.innerHTML = steps.map((step, index) => `
+                <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid var(--success);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h4 style="margin: 0; color: var(--success);">
+                            <i class="fas fa-tasks"></i> Step ${index + 1}
+                        </h4>
+                        <button class="btn" onclick="deleteProcessStep(${index})" style="background: var(--danger); padding: 8px 15px;">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Step Title:</label>
+                        <input type="text" id="processTitle${index}" value="${step.title}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Description:</label>
+                        <textarea id="processDesc${index}" rows="3" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">${step.description}</textarea>
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="saveProcessStep(${index})" style="width: 100%;">
+                        <i class="fas fa-save"></i> Save This Step
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function getDefaultProcess() {
+            return [
+                {title: "Consultation", description: "We discuss your needs and requirements to understand your goals."},
+                {title: "Planning", description: "We create a detailed plan and provide recommendations."},
+                {title: "Implementation", description: "We execute the plan with precision and expertise."},
+                {title: "Testing & Support", description: "We ensure everything works perfectly and provide ongoing support."}
+            ];
+        }
+
+        function saveProcessStep(index) {
+            const steps = JSON.parse(localStorage.getItem('websiteProcess') || JSON.stringify(getDefaultProcess()));
+            steps[index] = {
+                title: document.getElementById(`processTitle${index}`).value,
+                description: document.getElementById(`processDesc${index}`).value
+            };
+            localStorage.setItem('websiteProcess', JSON.stringify(steps));
+            showNotification('✓ Process step saved!', 'success');
+        }
+
+        function addNewProcessStep() {
+            const steps = JSON.parse(localStorage.getItem('websiteProcess') || JSON.stringify(getDefaultProcess()));
+            steps.push({title: "New Step", description: "Enter description"});
+            localStorage.setItem('websiteProcess', JSON.stringify(steps));
+            loadProcessSteps();
+            showNotification('✓ New step added!', 'success');
+        }
+
+        function deleteProcessStep(index) {
+            if (!confirm('Delete this step?')) return;
+            const steps = JSON.parse(localStorage.getItem('websiteProcess') || JSON.stringify(getDefaultProcess()));
+            steps.splice(index, 1);
+            localStorage.setItem('websiteProcess', JSON.stringify(steps));
+            loadProcessSteps();
+            showNotification('✓ Step deleted!', 'success');
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // WHY CHOOSE US MANAGER
+        // ═══════════════════════════════════════════════════════════
+
+        function loadBenefits() {
+            const benefits = JSON.parse(localStorage.getItem('websiteBenefits') || JSON.stringify(getDefaultBenefits()));
+            const benefitsList = document.getElementById('benefitsList');
+            
+            benefitsList.innerHTML = benefits.map((benefit, index) => `
+                <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #ffc107;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h4 style="margin: 0; color: #ffc107;">
+                            <i class="fas fa-star"></i> Benefit ${index + 1}
+                        </h4>
+                        <button class="btn" onclick="deleteBenefit(${index})" style="background: var(--danger); padding: 8px 15px;">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Benefit Title:</label>
+                        <input type="text" id="benefitTitle${index}" value="${benefit.title}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Description:</label>
+                        <textarea id="benefitDesc${index}" rows="2" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">${benefit.description}</textarea>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Icon (Font Awesome):</label>
+                        <input type="text" id="benefitIcon${index}" value="${benefit.icon}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="saveBenefit(${index})" style="width: 100%;">
+                        <i class="fas fa-save"></i> Save This Benefit
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function getDefaultBenefits() {
+            return [
+                {title: "15+ Years Experience", description: "Proven track record of IT excellence", icon: "medal"},
+                {title: "Expert Team", description: "Certified professionals dedicated to your success", icon: "users"},
+                {title: "24/7 Support", description: "Round-the-clock assistance when you need it", icon: "headset"},
+                {title: "Competitive Pricing", description: "Quality services at affordable rates", icon: "dollar-sign"}
+            ];
+        }
+
+        function saveBenefit(index) {
+            const benefits = JSON.parse(localStorage.getItem('websiteBenefits') || JSON.stringify(getDefaultBenefits()));
+            benefits[index] = {
+                title: document.getElementById(`benefitTitle${index}`).value,
+                description: document.getElementById(`benefitDesc${index}`).value,
+                icon: document.getElementById(`benefitIcon${index}`).value
+            };
+            localStorage.setItem('websiteBenefits', JSON.stringify(benefits));
+            showNotification('✓ Benefit saved!', 'success');
+        }
+
+        function addNewBenefit() {
+            const benefits = JSON.parse(localStorage.getItem('websiteBenefits') || JSON.stringify(getDefaultBenefits()));
+            benefits.push({title: "New Benefit", description: "Enter description", icon: "check"});
+            localStorage.setItem('websiteBenefits', JSON.stringify(benefits));
+            loadBenefits();
+            showNotification('✓ New benefit added!', 'success');
+        }
+
+        function deleteBenefit(index) {
+            if (!confirm('Delete this benefit?')) return;
+            const benefits = JSON.parse(localStorage.getItem('websiteBenefits') || JSON.stringify(getDefaultBenefits()));
+            benefits.splice(index, 1);
+            localStorage.setItem('websiteBenefits', JSON.stringify(benefits));
+            loadBenefits();
+            showNotification('✓ Benefit deleted!', 'success');
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // INDUSTRIES MANAGER
+        // ═══════════════════════════════════════════════════════════
+
+        function loadIndustries() {
+            const industries = JSON.parse(localStorage.getItem('websiteIndustries') || JSON.stringify(getDefaultIndustries()));
+            const industriesList = document.getElementById('industriesList');
+            
+            industriesList.innerHTML = industries.map((industry, index) => `
+                <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #17a2b8;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h4 style="margin: 0; color: #17a2b8;">
+                            <i class="fas fa-industry"></i> Industry ${index + 1}
+                        </h4>
+                        <button class="btn" onclick="deleteIndustry(${index})" style="background: var(--danger); padding: 8px 15px;">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Industry Name:</label>
+                        <input type="text" id="industryName${index}" value="${industry.name}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Description:</label>
+                        <textarea id="industryDesc${index}" rows="2" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">${industry.description}</textarea>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Icon (Font Awesome):</label>
+                        <input type="text" id="industryIcon${index}" value="${industry.icon}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="saveIndustry(${index})" style="width: 100%;">
+                        <i class="fas fa-save"></i> Save This Industry
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function getDefaultIndustries() {
+            return [
+                {name: "Healthcare", description: "Secure IT solutions for medical practices", icon: "hospital"},
+                {name: "Education", description: "Technology for schools and universities", icon: "graduation-cap"},
+                {name: "Finance", description: "Secure systems for financial institutions", icon: "chart-line"},
+                {name: "Retail", description: "Point-of-sale and inventory systems", icon: "shopping-cart"},
+                {name: "Manufacturing", description: "Industrial automation and control systems", icon: "industry"}
+            ];
+        }
+
+        function saveIndustry(index) {
+            const industries = JSON.parse(localStorage.getItem('websiteIndustries') || JSON.stringify(getDefaultIndustries()));
+            industries[index] = {
+                name: document.getElementById(`industryName${index}`).value,
+                description: document.getElementById(`industryDesc${index}`).value,
+                icon: document.getElementById(`industryIcon${index}`).value
+            };
+            localStorage.setItem('websiteIndustries', JSON.stringify(industries));
+            showNotification('✓ Industry saved!', 'success');
+        }
+
+        function addNewIndustry() {
+            const industries = JSON.parse(localStorage.getItem('websiteIndustries') || JSON.stringify(getDefaultIndustries()));
+            industries.push({name: "New Industry", description: "Enter description", icon: "briefcase"});
+            localStorage.setItem('websiteIndustries', JSON.stringify(industries));
+            loadIndustries();
+            showNotification('✓ New industry added!', 'success');
+        }
+
+        function deleteIndustry(index) {
+            if (!confirm('Delete this industry?')) return;
+            const industries = JSON.parse(localStorage.getItem('websiteIndustries') || JSON.stringify(getDefaultIndustries()));
+            industries.splice(index, 1);
+            localStorage.setItem('websiteIndustries', JSON.stringify(industries));
+            loadIndustries();
+            showNotification('✓ Industry deleted!', 'success');
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // ABOUT US MANAGER
+        // ═══════════════════════════════════════════════════════════
+
+        function loadAboutSection() {
+            const about = JSON.parse(localStorage.getItem('websiteAbout') || JSON.stringify(getDefaultAbout()));
+            
+            document.getElementById('aboutCompanyName').value = about.companyName || 'Cyberlogic IT';
+            document.getElementById('aboutTagline').value = about.tagline || 'Your Trusted IT Partner in Melbourne';
+            document.getElementById('aboutStory').value = about.story || "With over 15 years of experience...";
+            document.getElementById('aboutMission').value = about.mission || "To provide innovative, reliable...";
+            document.getElementById('aboutVision').value = about.vision || "To be Melbourne's leading IT services provider...";
+            document.getElementById('aboutValues').value = about.values || "Excellence - We deliver quality...";
+        }
+
+        function getDefaultAbout() {
+            return {
+                companyName: 'Cyberlogic IT',
+                tagline: 'Your Trusted IT Partner in Melbourne',
+                story: "With over 15 years of experience in the IT industry, Cyberlogic IT has been Melbourne's trusted partner for custom computer systems and comprehensive IT solutions. We specialize in building high-performance custom PCs, providing expert IT consulting, and delivering reliable technical support to help your business thrive in the digital age.",
+                mission: "To provide innovative, reliable, and customized IT solutions that empower businesses and individuals to achieve their goals through technology.",
+                vision: "To be Melbourne's leading IT services provider, recognized for excellence, innovation, and customer satisfaction.",
+                values: "Excellence - We deliver quality in everything we do\nIntegrity - We operate with honesty and transparency\nInnovation - We embrace new technologies and solutions\nCustomer Focus - Your success is our priority"
+            };
+        }
+
+        function saveAboutSection(field) {
+            const about = JSON.parse(localStorage.getItem('websiteAbout') || JSON.stringify(getDefaultAbout()));
+            
+            let displayName = '';
+            switch(field) {
+                case 'companyName':
+                    about.companyName = document.getElementById('aboutCompanyName').value;
+                    displayName = 'Company Name';
+                    break;
+                case 'tagline':
+                    about.tagline = document.getElementById('aboutTagline').value;
+                    displayName = 'Tagline';
+                    break;
+                case 'story':
+                    about.story = document.getElementById('aboutStory').value;
+                    displayName = 'Company Story';
+                    break;
+                case 'mission':
+                    about.mission = document.getElementById('aboutMission').value;
+                    displayName = 'Mission Statement';
+                    break;
+                case 'vision':
+                    about.vision = document.getElementById('aboutVision').value;
+                    displayName = 'Vision Statement';
+                    break;
+                case 'values':
+                    about.values = document.getElementById('aboutValues').value;
+                    displayName = 'Core Values';
+                    break;
+            }
+            
+            localStorage.setItem('websiteAbout', JSON.stringify(about));
+            showNotification(`✓ ${displayName} saved successfully!`, 'success');
         }
 
         // Check if already logged in
