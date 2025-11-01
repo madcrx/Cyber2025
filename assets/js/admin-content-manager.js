@@ -18,8 +18,13 @@
         const notification = document.createElement('div');
         notification.className = `save-notification ${type}`;
         notification.innerHTML = `
-            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
-            <span>${message}</span>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+                <div>
+                    <div style="font-weight: 600;">${message}</div>
+                    ${type === 'success' ? '<div style="font-size: 0.85em; margin-top: 3px; opacity: 0.9;">💡 Refresh your website to see changes!</div>' : ''}
+                </div>
+            </div>
         `;
         
         // Add styles if not already present
@@ -43,7 +48,7 @@
                     opacity: 0;
                     transform: translateY(-20px);
                     transition: all 0.3s ease;
-                    font-weight: 600;
+                    max-width: 400px;
                 }
                 .save-notification.show {
                     opacity: 1;
@@ -53,7 +58,8 @@
                     background: #dc3545;
                 }
                 .save-notification i {
-                    font-size: 20px;
+                    font-size: 24px;
+                    flex-shrink: 0;
                 }
             `;
             document.head.appendChild(style);
@@ -65,7 +71,7 @@
         setTimeout(() => {
             notification.classList.remove('show');
             setTimeout(() => notification.remove(), 300);
-        }, 3000);
+        }, 4000); // Show for 4 seconds to give time to read the refresh reminder
     };
 
     // ═══════════════════════════════════════════════════════════
