@@ -542,6 +542,218 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Guide Cards Styling */
+        .guide-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-color: var(--primary);
+        }
+
+        .guide-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .guide-card:hover::before {
+            opacity: 1;
+        }
+
+        .guide-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .guide-icon i {
+            font-size: 28px;
+            color: white;
+        }
+
+        .guide-card h4 {
+            margin: 0 0 10px 0;
+            color: #2d3748;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .guide-card p {
+            margin: 0 0 15px 0;
+            color: #718096;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .guide-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 0.85em;
+            color: #a0aec0;
+        }
+
+        .guide-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .guide-meta i {
+            font-size: 0.9em;
+        }
+
+        #guideModal {
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        #guideModalContent {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        #guideModalContent h1,
+        #guideModalContent h2,
+        #guideModalContent h3 {
+            color: var(--primary);
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        #guideModalContent h1 {
+            font-size: 2em;
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 10px;
+        }
+
+        #guideModalContent h2 {
+            font-size: 1.6em;
+            margin-top: 30px;
+        }
+
+        #guideModalContent h3 {
+            font-size: 1.3em;
+        }
+
+        #guideModalContent ul,
+        #guideModalContent ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        #guideModalContent li {
+            margin-bottom: 8px;
+        }
+
+        #guideModalContent code {
+            background: #f7fafc;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #e53e3e;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        #guideModalContent pre {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        #guideModalContent pre code {
+            background: transparent;
+            color: #e2e8f0;
+            padding: 0;
+        }
+
+        #guideModalContent blockquote {
+            border-left: 4px solid var(--primary);
+            background: #f7fafc;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        #guideModalContent table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        #guideModalContent th,
+        #guideModalContent td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #e2e8f0;
+        }
+
+        #guideModalContent th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        #guideModalContent tr:nth-child(even) {
+            background: #f7fafc;
+        }
+
+        #guideModalContent a {
+            color: var(--primary);
+            text-decoration: none;
+            border-bottom: 1px solid var(--primary);
+        }
+
+        #guideModalContent a:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        #guideModalContent img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        #guideModalContent hr {
+            border: none;
+            border-top: 2px solid #e2e8f0;
+            margin: 30px 0;
+        }
     </style>
 </head>
 <body>
@@ -647,8 +859,8 @@
 
                     <div class="dashboard-card" onclick="showPage('websiteOptimization')">
                         <i class="fas fa-gauge-high"></i>
-                        <h3>Website Optimization</h3>
-                        <p>Analyze and optimize images, code, loading speed, and overall site performance.</p>
+                        <h3>Website Optimisation</h3>
+                        <p>Analyze and optimise images, code, loading speed, and overall site performance.</p>
                     </div>
 
                     <div class="dashboard-card" onclick="showPage('seoTools')">
@@ -691,6 +903,12 @@
                         <i class="fas fa-users"></i>
                         <h3>User Management</h3>
                         <p>Add, edit, or remove admin users and manage access permissions.</p>
+                    </div>
+
+                    <div class="dashboard-card" onclick="showPage('guides')">
+                        <i class="fas fa-book-open"></i>
+                        <h3>Guides & Documentation</h3>
+                        <p>Access comprehensive guides, tutorials, and documentation for your website.</p>
                     </div>
 
                     <div class="dashboard-card" onclick="window.open('../index.html', '_blank')">
@@ -929,6 +1147,26 @@
 
                 <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
                     <h3 style="margin-bottom: 20px; color: var(--primary);">
+                        <i class="fas fa-heading"></i> FAQ Section Header
+                    </h3>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Section Heading:</label>
+                        <input type="text" id="faqHeading" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px;">
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Section Subtitle:</label>
+                        <input type="text" id="faqSubtitle" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px;">
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="saveFAQHeader()">
+                        <i class="fas fa-save"></i> Save Header
+                    </button>
+                </div>
+
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 20px; color: var(--primary);">
                         <i class="fas fa-question-circle"></i> Frequently Asked Questions
                     </h3>
                     <p style="color: #666; margin-bottom: 20px;">Add, edit, or remove FAQ items. Each FAQ saves individually.</p>
@@ -954,16 +1192,32 @@
 
                 <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
                     <h3 style="margin-bottom: 20px; color: var(--primary);">
-                        <i class="fas fa-tasks"></i> Our Process Steps
+                        <i class="fas fa-heading"></i> Process Section Header
+                    </h3>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Section Heading:</label>
+                        <input type="text" id="processHeading" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px;">
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Section Subtitle:</label>
+                        <input type="text" id="processSubtitle" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px;">
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="saveProcessHeader()">
+                        <i class="fas fa-save"></i> Save Header
+                    </button>
+                </div>
+
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 20px; color: var(--primary);">
+                        <i class="fas fa-tasks"></i> Process Steps
                     </h3>
                     <p style="color: #666; margin-bottom: 20px;">Update your workflow process steps. Each step saves individually.</p>
-                    
-                    <button class="btn btn-primary" onclick="addNewProcessStep()" style="margin-bottom: 20px;">
-                        <i class="fas fa-plus"></i> Add New Step
-                    </button>
 
-                    <div id="processList">
-                        <!-- Process steps will be loaded here -->
+                    <div id="processStepsList">
+                        <!-- Process steps will be loaded here by admin-content-manager.js -->
                     </div>
                 </div>
             </div>
@@ -979,16 +1233,36 @@
 
                 <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
                     <h3 style="margin-bottom: 20px; color: var(--primary);">
-                        <i class="fas fa-star"></i> Why Choose Us Benefits
+                        <i class="fas fa-heading"></i> Why Choose Us Section Header
                     </h3>
-                    <p style="color: #666; margin-bottom: 20px;">Update reasons why clients should choose you. Each benefit saves individually.</p>
                     
-                    <button class="btn btn-primary" onclick="addNewBenefit()" style="margin-bottom: 20px;">
-                        <i class="fas fa-plus"></i> Add New Benefit
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Section Heading:</label>
+                        <input type="text" id="whyHeading" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px;">
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Section Subtitle:</label>
+                        <input type="text" id="whySubtitle" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px;">
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="saveWhyChooseHeader()">
+                        <i class="fas fa-save"></i> Save Header
+                    </button>
+                </div>
+
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 20px; color: var(--primary);">
+                        <i class="fas fa-star"></i> Why Choose Us Reasons
+                    </h3>
+                    <p style="color: #666; margin-bottom: 20px;">Update reasons why clients should choose you. Each reason saves individually.</p>
+                    
+                    <button class="btn btn-primary" onclick="addNewWhyChoose()" style="margin-bottom: 20px;">
+                        <i class="fas fa-plus"></i> Add New Reason
                     </button>
 
-                    <div id="benefitsList">
-                        <!-- Benefits will be loaded here -->
+                    <div id="whyChooseList">
+                        <!-- Reasons will be loaded here by admin-content-manager.js -->
                     </div>
                 </div>
             </div>
@@ -1004,6 +1278,26 @@
 
                 <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
                     <h3 style="margin-bottom: 20px; color: var(--primary);">
+                        <i class="fas fa-heading"></i> Industries Section Header
+                    </h3>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Section Heading:</label>
+                        <input type="text" id="industriesHeading" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px;">
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Section Subtitle:</label>
+                        <input type="text" id="industriesSubtitle" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px;">
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="saveIndustriesHeader()">
+                        <i class="fas fa-save"></i> Save Header
+                    </button>
+                </div>
+
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 20px; color: var(--primary);">
                         <i class="fas fa-industry"></i> Industries & Sectors
                     </h3>
                     <p style="color: #666; margin-bottom: 20px;">Update industries you serve. Each industry saves individually.</p>
@@ -1013,7 +1307,7 @@
                     </button>
 
                     <div id="industriesList">
-                        <!-- Industries will be loaded here -->
+                        <!-- Industries will be loaded here by admin-content-manager.js -->
                     </div>
                 </div>
             </div>
@@ -1029,76 +1323,425 @@
 
                 <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
                     <h3 style="margin-bottom: 20px; color: var(--primary);">
-                        <i class="fas fa-info-circle"></i> About Us Content
+                        <i class="fas fa-info-circle"></i> About Section Content
                     </h3>
+                    <p style="color: #666; margin-bottom: 20px;">Update your About Us section. All fields save together.</p>
 
-                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
-                            <i class="fas fa-heading"></i> Company Name
-                        </label>
-                        <input type="text" id="aboutCompanyName" value="Cyberlogic IT" 
-                               style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
-                        <button class="btn btn-primary" onclick="saveAboutSection('companyName')" style="width: 100%;">
-                            <i class="fas fa-save"></i> Save Company Name
-                        </button>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Section Tag:</label>
+                        <input type="text" id="aboutTag" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px;">
                     </div>
 
-                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
-                            <i class="fas fa-quote-left"></i> Company Tagline
-                        </label>
-                        <input type="text" id="aboutTagline" value="Your Trusted IT Partner in Melbourne" 
-                               style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
-                        <button class="btn btn-primary" onclick="saveAboutSection('tagline')" style="width: 100%;">
-                            <i class="fas fa-save"></i> Save Tagline
-                        </button>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Section Title:</label>
+                        <input type="text" id="aboutTitle" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px;">
                     </div>
 
-                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
-                            <i class="fas fa-align-left"></i> Company Story
-                        </label>
-                        <textarea id="aboutStory" rows="5" 
-                                  style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">With over 15 years of experience in the IT industry, Cyberlogic IT has been Melbourne's trusted partner for custom computer systems and comprehensive IT solutions. We specialize in building high-performance custom PCs, providing expert IT consulting, and delivering reliable technical support to help your business thrive in the digital age.</textarea>
-                        <button class="btn btn-primary" onclick="saveAboutSection('story')" style="width: 100%;">
-                            <i class="fas fa-save"></i> Save Story
-                        </button>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Section Subtitle:</label>
+                        <input type="text" id="aboutSubtitle" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px;">
                     </div>
 
-                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
-                            <i class="fas fa-bullseye"></i> Mission Statement
-                        </label>
-                        <textarea id="aboutMission" rows="3" 
-                                  style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">To provide innovative, reliable, and customized IT solutions that empower businesses and individuals to achieve their goals through technology.</textarea>
-                        <button class="btn btn-primary" onclick="saveAboutSection('mission')" style="width: 100%;">
-                            <i class="fas fa-save"></i> Save Mission
-                        </button>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Content Heading:</label>
+                        <input type="text" id="aboutHeading" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px;">
                     </div>
 
-                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
-                            <i class="fas fa-eye"></i> Vision Statement
-                        </label>
-                        <textarea id="aboutVision" rows="3" 
-                                  style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">To be Melbourne's leading IT services provider, recognized for excellence, innovation, and customer satisfaction.</textarea>
-                        <button class="btn btn-primary" onclick="saveAboutSection('vision')" style="width: 100%;">
-                            <i class="fas fa-save"></i> Save Vision
-                        </button>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Paragraph 1:</label>
+                        <textarea id="aboutPara1" rows="4" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px;"></textarea>
                     </div>
 
-                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                        <label style="display: block; margin-bottom: 10px; font-weight: 600;">
-                            <i class="fas fa-heart"></i> Core Values
-                        </label>
-                        <textarea id="aboutValues" rows="4" 
-                                  style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">Excellence - We deliver quality in everything we do
-Integrity - We operate with honesty and transparency
-Innovation - We embrace new technologies and solutions
-Customer Focus - Your success is our priority</textarea>
-                        <button class="btn btn-primary" onclick="saveAboutSection('values')" style="width: 100%;">
-                            <i class="fas fa-save"></i> Save Values
-                        </button>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Paragraph 2:</label>
+                        <textarea id="aboutPara2" rows="4" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px;"></textarea>
+                    </div>
+
+                    <button class="btn btn-primary" onclick="saveAboutContent()" style="width: 100%;">
+                        <i class="fas fa-save"></i> Save About Us Content
+                    </button>
+                </div>
+            </div>
+
+            <!-- Guides & Documentation Page -->
+            <div class="page-content" id="guidesPage">
+                <div class="page-header">
+                    <h2><i class="fas fa-book-open"></i> Guides & Documentation</h2>
+                    <button class="btn-back" onclick="showPage('dashboard')">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </button>
+                </div>
+
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 30px;">
+                    <h3 style="margin-bottom: 15px; color: var(--primary);">
+                        <i class="fas fa-info-circle"></i> Welcome to Documentation Center
+                    </h3>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">
+                        Access comprehensive guides and documentation for managing your website. Each guide includes step-by-step instructions, 
+                        screenshots, and best practices. Click any guide below to view its contents.
+                    </p>
+                    <div style="background: #e8f4f8; padding: 15px; border-left: 4px solid var(--primary); border-radius: 4px;">
+                        <strong><i class="fas fa-lightbulb"></i> Quick Tip:</strong> Start with the "Getting Started" guide if you're new to the admin panel.
+                    </div>
+                </div>
+
+                <!-- Getting Started Section -->
+                <div style="margin-bottom: 25px;">
+                    <h3 style="color: var(--primary); margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e0e0e0;">
+                        <i class="fas fa-rocket"></i> Getting Started
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;">
+                        
+                        <!-- README -->
+                        <div class="guide-card" onclick="viewGuide('README.md')">
+                            <div class="guide-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h4>README - Overview</h4>
+                            <p>Essential introduction to your website package. Start here!</p>
+                            <div class="guide-meta">
+                                <span><i class="fas fa-clock"></i> 5 min read</span>
+                                <span><i class="fas fa-star"></i> Essential</span>
+                            </div>
+                        </div>
+
+                        <!-- Admin Guide -->
+                        <div class="guide-card" onclick="viewGuide('ADMIN_GUIDE.md')">
+                            <div class="guide-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                            <h4>Admin Panel Guide</h4>
+                            <p>Complete guide to using the admin panel features and functions.</p>
+                            <div class="guide-meta">
+                                <span><i class="fas fa-clock"></i> 8 min read</span>
+                                <span><i class="fas fa-star"></i> Essential</span>
+                            </div>
+                        </div>
+
+                        <!-- Content Management -->
+                        <div class="guide-card" onclick="viewGuide('ADMIN-CONTENT-MANAGEMENT-GUIDE.md')">
+                            <div class="guide-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <h4>Content Management</h4>
+                            <p>Learn how to edit all website content using the admin panel.</p>
+                            <div class="guide-meta">
+                                <span><i class="fas fa-clock"></i> 10 min read</span>
+                                <span><i class="fas fa-star"></i> Essential</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deployment & Installation Section -->
+                <div style="margin-bottom: 25px;">
+                    <h3 style="color: var(--primary); margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e0e0e0;">
+                        <i class="fas fa-cloud-upload-alt"></i> Deployment & Installation
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;">
+                        
+                        <!-- Deployment Guide -->
+                        <div class="guide-card" onclick="viewGuide('README-DEPLOYMENT.md')">
+                            <div class="guide-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h4>Deployment Guide</h4>
+                            <p>Step-by-step instructions for deploying your website to production.</p>
+                            <div class="guide-meta">
+                                <span><i class="fas fa-clock"></i> 12 min read</span>
+                                <span><i class="fas fa-fire"></i> Important</span>
+                            </div>
+                        </div>
+
+                        <!-- Windows Deployment -->
+                        <div class="guide-card" onclick="viewGuide('WINDOWS-DEPLOYMENT-GUIDE.txt')">
+                            <div class="guide-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                                <i class="fab fa-windows"></i>
+                            </div>
+                            <h4>Windows Deployment</h4>
+                            <p>Specific guide for deploying from Windows using FileZilla.</p>
+                            <div class="guide-meta">
+                                <span><i class="fas fa-clock"></i> 8 min read</span>
+                                <span><i class="fas fa-desktop"></i> Windows</span>
+                            </div>
+                        </div>
+
+                        <!-- Installation -->
+                        <div class="guide-card" onclick="viewGuide('INSTALL.md')">
+                            <div class="guide-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                                <i class="fas fa-download"></i>
+                            </div>
+                            <h4>Installation Guide</h4>
+                            <p>Complete installation instructions and requirements.</p>
+                            <div class="guide-meta">
+                                <span><i class="fas fa-clock"></i> 7 min read</span>
+                                <span><i class="fas fa-cog"></i> Technical</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Features & Management Section -->
+                <div style="margin-bottom: 25px;">
+                    <h3 style="color: var(--primary); margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e0e0e0;">
+                        <i class="fas fa-tools"></i> Features & Management
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;">
+                        
+                        <!-- Theme Manager -->
+                        <div class="guide-card" onclick="viewGuide('THEME-MANAGER-ENHANCED-GUIDE.md')">
+                            <div class="guide-icon" style="background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <h4>Theme Manager Guide</h4>
+                            <p>Learn how to customise your website's appearance and colors.</p>
+                            <div class="guide-meta">
+                                <span><i class="fas fa-clock"></i> 6 min read</span>
+                                <span><i class="fas fa-paint-brush"></i> Design</span>
+                            </div>
+                        </div>
+
+                        <!-- Image Management -->
+                        <div class="guide-card" onclick="viewGuide('IMAGE_MANAGEMENT_GUIDE.md')">
+                            <div class="guide-icon" style="background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);">
+                                <i class="fas fa-images"></i>
+                            </div>
+                            <h4>Image Management</h4>
+                            <p>Upload, optimise, and manage images for your website.</p>
+                            <div class="guide-meta">
+                                <span><i class="fas fa-clock"></i> 5 min read</span>
+                                <span><i class="fas fa-image"></i> Media</span>
+                            </div>
+                        </div>
+
+                        <!-- Contact Form -->
+                        <div class="guide-card" onclick="viewGuide('CONTACT_FORM_SETUP.md')">
+                            <div class="guide-icon" style="background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h4>Contact Form Setup</h4>
+                            <p>Configure and test your contact form functionality.</p>
+                            <div class="guide-meta">
+                                <span><i class="fas fa-clock"></i> 5 min read</span>
+                                <span><i class="fas fa-envelope-open-text"></i> Forms</span>
+                            </div>
+                        </div>
+
+                        <!-- Admin Features -->
+                        <div class="guide-card" onclick="viewGuide('ADMIN_FEATURES.md')">
+                            <div class="guide-icon" style="background: linear-gradient(135deg, #fddb92 0%, #d1fdff 100%);">
+                                <i class="fas fa-list-check"></i>
+                            </div>
+                            <h4>Admin Features List</h4>
+                            <p>Complete list of all admin panel features and capabilities.</p>
+                            <div class="guide-meta">
+                                <span><i class="fas fa-clock"></i> 4 min read</span>
+                                <span><i class="fas fa-list"></i> Reference</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security & Technical Section -->
+                <div style="margin-bottom: 25px;">
+                    <h3 style="color: var(--primary); margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e0e0e0;">
+                        <i class="fas fa-shield-alt"></i> Security & Technical
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;">
+                        
+                        <!-- Security Implementation -->
+                        <div class="guide-card" onclick="viewGuide('SECURITY-IMPLEMENTATION.md')">
+                            <div class="guide-icon" style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <h4>Security Implementation</h4>
+                            <p>Enterprise-grade security features and best practices.</p>
+                            <div class="guide-meta">
+                                <span><i class="fas fa-clock"></i> 10 min read</span>
+                                <span><i class="fas fa-shield-alt"></i> Critical</span>
+                            </div>
+                        </div>
+
+                        <!-- Security Deployment -->
+                        <div class="guide-card" onclick="viewGuide('SECURITY-DEPLOYMENT-SUMMARY.md')">
+                            <div class="guide-icon" style="background: linear-gradient(135deg, #f857a6 0%, #ff5858 100%);">
+                                <i class="fas fa-user-lock"></i>
+                            </div>
+                            <h4>Security Deployment</h4>
+                            <p>Quick reference for deploying security measures.</p>
+                            <div class="guide-meta">
+                                <span><i class="fas fa-clock"></i> 6 min read</span>
+                                <span><i class="fas fa-exclamation-triangle"></i> Important</span>
+                            </div>
+                        </div>
+
+                        <!-- Optimisation Report -->
+                        <div class="guide-card" onclick="viewGuide('OPTIMIZATION_REPORT.md')">
+                            <div class="guide-icon" style="background: linear-gradient(135deg, #48c6ef 0%, #6f86d6 100%);">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            <h4>Optimisation Report</h4>
+                            <p>Website performance optimisation details and improvements.</p>
+                            <div class="guide-meta">
+                                <span><i class="fas fa-clock"></i> 7 min read</span>
+                                <span><i class="fas fa-bolt"></i> Performance</span>
+                            </div>
+                        </div>
+
+                        <!-- AI Tools -->
+                        <div class="guide-card" onclick="viewGuide('AI-TOOLS-IMPLEMENTATION-SUMMARY.md')">
+                            <div class="guide-icon" style="background: linear-gradient(135deg, #0ba360 0%, #3cba92 100%);">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h4>AI Tools Summary</h4>
+                            <p>AI-powered features and implementation details.</p>
+                            <div class="guide-meta">
+                                <span><i class="fas fa-clock"></i> 5 min read</span>
+                                <span><i class="fas fa-brain"></i> Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GitHub & Version Control Section -->
+                <div style="margin-bottom: 25px;">
+                    <h3 style="color: var(--primary); margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e0e0e0;">
+                        <i class="fab fa-github"></i> GitHub & Version Control
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;">
+                        
+                        <!-- GitHub Deployment -->
+                        <div class="guide-card" onclick="viewGuide('GITHUB_DEPLOY.md')">
+                            <div class="guide-icon" style="background: linear-gradient(135deg, #24243e 0%, #302b63 100%);">
+                                <i class="fab fa-github-alt"></i>
+                            </div>
+                            <h4>GitHub Deployment</h4>
+                            <p>Deploy and manage your website code on GitHub.</p>
+                            <div class="guide-meta">
+                                <span><i class="fas fa-clock"></i> 8 min read</span>
+                                <span><i class="fab fa-git-alt"></i> Git</span>
+                            </div>
+                        </div>
+
+                        <!-- GitHub Guide -->
+                        <div class="guide-card" onclick="viewGuide('GITHUB_GUIDE.md')">
+                            <div class="guide-icon" style="background: linear-gradient(135deg, #0f2027 0%, #203a43 100%);">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <h4>GitHub Guide</h4>
+                            <p>Complete guide to using GitHub for version control.</p>
+                            <div class="guide-meta">
+                                <span><i class="fas fa-clock"></i> 10 min read</span>
+                                <span><i class="fas fa-code-branch"></i> Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reference & Reports Section -->
+                <div style="margin-bottom: 25px;">
+                    <h3 style="color: var(--primary); margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e0e0e0;">
+                        <i class="fas fa-file-alt"></i> Reference & Reports
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;">
+                        
+                        <!-- Project Summary -->
+                        <div class="guide-card" onclick="viewGuide('PROJECT_SUMMARY.md')">
+                            <div class="guide-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <h4>Project Summary</h4>
+                            <p>Overview of the entire website project and architecture.</p>
+                            <div class="guide-meta">
+                                <span><i class="fas fa-clock"></i> 6 min read</span>
+                                <span><i class="fas fa-info-circle"></i> Overview</span>
+                            </div>
+                        </div>
+
+                        <!-- File Manifest -->
+                        <div class="guide-card" onclick="viewGuide('FILE_MANIFEST.md')">
+                            <div class="guide-icon" style="background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);">
+                                <i class="fas fa-folder-open"></i>
+                            </div>
+                            <h4>File Manifest</h4>
+                            <p>Complete list of all files and their purposes.</p>
+                            <div class="guide-meta">
+                                <span><i class="fas fa-clock"></i> 4 min read</span>
+                                <span><i class="fas fa-list-ul"></i> Reference</span>
+                            </div>
+                        </div>
+
+                        <!-- Final Test Report -->
+                        <div class="guide-card" onclick="viewGuide('FINAL-TEST-REPORT.md')">
+                            <div class="guide-icon" style="background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h4>Final Test Report</h4>
+                            <p>Comprehensive testing results and validation report.</p>
+                            <div class="guide-meta">
+                                <span><i class="fas fa-clock"></i> 5 min read</span>
+                                <span><i class="fas fa-clipboard-check"></i> Testing</span>
+                            </div>
+                        </div>
+
+                        <!-- Updates Summary -->
+                        <div class="guide-card" onclick="viewGuide('UPDATES-SUMMARY.md')">
+                            <div class="guide-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <h4>Updates Summary</h4>
+                            <p>Log of all updates, changes, and version history.</p>
+                            <div class="guide-meta">
+                                <span><i class="fas fa-clock"></i> 4 min read</span>
+                                <span><i class="fas fa-history"></i> Changelog</span>
+                            </div>
+                        </div>
+
+                        <!-- Visual Location Guide -->
+                        <div class="guide-card" onclick="viewGuide('VISUAL_LOCATION_GUIDE.txt')">
+                            <div class="guide-icon" style="background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                            <h4>Visual Location Guide</h4>
+                            <p>Visual reference for finding content sections on your website.</p>
+                            <div class="guide-meta">
+                                <span><i class="fas fa-clock"></i> 3 min read</span>
+                                <span><i class="fas fa-eye"></i> Visual</span>
+                            </div>
+                        </div>
+
+                        <!-- Theme Manager Summary -->
+                        <div class="guide-card" onclick="viewGuide('THEME-MANAGER-SUMMARY.md')">
+                            <div class="guide-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                                <i class="fas fa-swatchbook"></i>
+                            </div>
+                            <h4>Theme Manager Summary</h4>
+                            <p>Quick reference for theme management features.</p>
+                            <div class="guide-meta">
+                                <span><i class="fas fa-clock"></i> 3 min read</span>
+                                <span><i class="fas fa-palette"></i> Themes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Guide Viewer Modal (hidden by default) -->
+                <div id="guideModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; overflow-y: auto;">
+                    <div style="max-width: 900px; margin: 50px auto; background: white; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
+                        <div style="padding: 30px; border-bottom: 2px solid #e0e0e0; display: flex; justify-content: space-between; align-items: center;">
+                            <h2 id="guideModalTitle" style="margin: 0; color: var(--primary);"></h2>
+                            <button onclick="closeGuideModal()" style="background: none; border: none; font-size: 28px; cursor: pointer; color: #999; padding: 0; width: 40px; height: 40px;">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div id="guideModalContent" style="padding: 30px; max-height: 70vh; overflow-y: auto; line-height: 1.8; color: #333;">
+                            <!-- Guide content will be loaded here -->
+                        </div>
+                        <div style="padding: 20px 30px; border-top: 2px solid #e0e0e0; background: #f8f9fa; border-radius: 0 0 10px 10px;">
+                            <button onclick="closeGuideModal()" class="btn btn-primary" style="width: 100%;">
+                                <i class="fas fa-check"></i> Close Guide
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1776,7 +2419,7 @@ Customer Focus - Your success is our priority</textarea>
                             <i class="fas fa-paragraph"></i> About Description (Paragraph 2)
                         </label>
                         <textarea id="contentAboutPara2" rows="3" 
-                                  style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px;">We specialize in building high-performance custom PCs, providing expert IT consulting, and delivering reliable technical support to help your business thrive in the digital age.</textarea>
+                                  style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px;">We specialise in building high-performance custom PCs, providing expert IT consulting, and delivering reliable technical support to help your business thrive in the digital age.</textarea>
                     </div>
 
                     <button class="btn btn-primary" onclick="saveContentSection('about')" style="width: 100%;">
@@ -2172,7 +2815,7 @@ Customer Focus - Your success is our priority</textarea>
                             <i class="fas fa-tachometer-alt" style="font-size: 28px; color: var(--primary);"></i>
                             <h3 style="margin: 0;">PageSpeed Insights</h3>
                         </div>
-                        <p style="color: #666; margin-bottom: 15px;">Test your website's performance and get optimization suggestions from Google.</p>
+                        <p style="color: #666; margin-bottom: 15px;">Test your website's performance and get optimisation suggestions from Google.</p>
                         <button class="btn btn-primary" onclick="runIndividualTest('pagespeed')" style="width: 100%;">
                             <i class="fas fa-rocket"></i> Test & Get Report
                         </button>
@@ -2184,7 +2827,7 @@ Customer Focus - Your success is our priority</textarea>
                             <i class="fas fa-chart-line" style="font-size: 28px; color: var(--primary);"></i>
                             <h3 style="margin: 0;">GTmetrix</h3>
                         </div>
-                        <p style="color: #666; margin-bottom: 15px;">Detailed performance analysis with waterfall charts and optimization recommendations.</p>
+                        <p style="color: #666; margin-bottom: 15px;">Detailed performance analysis with waterfall charts and optimisation recommendations.</p>
                         <button class="btn btn-primary" onclick="runIndividualTest('gtmetrix')" style="width: 100%;">
                             <i class="fas fa-chart-bar"></i> Test & Get Report
                         </button>
@@ -2196,7 +2839,7 @@ Customer Focus - Your success is our priority</textarea>
                             <i class="fas fa-mobile-alt" style="font-size: 28px; color: var(--primary);"></i>
                             <h3 style="margin: 0;">Mobile-Friendly Test</h3>
                         </div>
-                        <p style="color: #666; margin-bottom: 15px;">Check if your website is optimized for mobile devices using Google's test.</p>
+                        <p style="color: #666; margin-bottom: 15px;">Check if your website is optimised for mobile devices using Google's test.</p>
                         <button class="btn btn-primary" onclick="runIndividualTest('mobile')" style="width: 100%;">
                             <i class="fas fa-mobile-screen"></i> Test & Get Report
                         </button>
@@ -2277,10 +2920,10 @@ Customer Focus - Your success is our priority</textarea>
                 </div>
             </div>
 
-            <!-- Website Optimization -->
+            <!-- Website Optimisation -->
             <div class="page-content" id="websiteOptimizationPage">
                 <div class="page-header">
-                    <h2>Website Optimization Tools</h2>
+                    <h2>Website Optimisation Tools</h2>
                     <button class="btn-back" onclick="showPage('dashboard')">
                         <i class="fas fa-arrow-left"></i> Back to Dashboard
                     </button>
@@ -2330,7 +2973,7 @@ Customer Focus - Your success is our priority</textarea>
                             <i class="fab fa-js-square" style="font-size: 28px; color: var(--primary);"></i>
                             <h3 style="margin: 0;">JavaScript Minifier</h3>
                         </div>
-                        <p style="color: #666; margin-bottom: 15px;">Minify JavaScript files to optimize code and reduce bandwidth usage.</p>
+                        <p style="color: #666; margin-bottom: 15px;">Minify JavaScript files to optimise code and reduce bandwidth usage.</p>
                         <button class="btn btn-primary" onclick="window.open('https://www.toptal.com/developers/javascript-minifier', '_blank')" style="width: 100%;">
                             <i class="fas fa-file-code"></i> Minify JS
                         </button>
@@ -2464,7 +3107,7 @@ Customer Focus - Your success is our priority</textarea>
                             <i class="fas fa-tags" style="font-size: 28px; color: var(--primary);"></i>
                             <h3 style="margin: 0;">Meta Tags Analyzer</h3>
                         </div>
-                        <p style="color: #666; margin-bottom: 15px;">Analyze meta tags, titles, and descriptions for SEO optimization.</p>
+                        <p style="color: #666; margin-bottom: 15px;">Analyze meta tags, titles, and descriptions for SEO optimisation.</p>
                         <button class="btn btn-primary" onclick="window.open('https://metatags.io/?url=https://www.cyberlogicit.com.au', '_blank')" style="width: 100%;">
                             <i class="fas fa-code"></i> Analyze Meta
                         </button>
@@ -2794,19 +3437,21 @@ Customer Focus - Your success is our priority</textarea>
                 loadUsers();
             } else if (pageName === 'faqEditor') {
                 document.getElementById('faqEditorPage').classList.add('active');
-                loadFAQs();
+                loadFAQContent();
             } else if (pageName === 'processEditor') {
                 document.getElementById('processEditorPage').classList.add('active');
                 loadProcessSteps();
             } else if (pageName === 'whyChooseEditor') {
                 document.getElementById('whyChooseEditorPage').classList.add('active');
-                loadBenefits();
+                loadWhyChooseUs();
             } else if (pageName === 'industriesEditor') {
                 document.getElementById('industriesEditorPage').classList.add('active');
                 loadIndustries();
             } else if (pageName === 'aboutEditor') {
                 document.getElementById('aboutEditorPage').classList.add('active');
-                loadAboutSection();
+                loadAboutUsContent();
+            } else if (pageName === 'guides') {
+                document.getElementById('guidesPage').classList.add('active');
             }
         }
 
@@ -2828,7 +3473,7 @@ Customer Focus - Your success is our priority</textarea>
             document.getElementById('service1Title').value = content.service1Title || 'Custom Computer Systems';
             document.getElementById('service1Desc').value = content.service1Desc || 'Tailored PC builds for gaming, workstations, and business applications.';
             document.getElementById('service2Title').value = content.service2Title || 'IT Consulting';
-            document.getElementById('service2Desc').value = content.service2Desc || 'Strategic IT guidance to optimize your technology infrastructure.';
+            document.getElementById('service2Desc').value = content.service2Desc || 'Strategic IT guidance to optimise your technology infrastructure.';
             document.getElementById('service3Title').value = content.service3Title || 'Network Solutions';
             document.getElementById('service3Desc').value = content.service3Desc || 'Design, implementation, and management of robust network systems.';
         }
@@ -2925,7 +3570,7 @@ Customer Focus - Your success is our priority</textarea>
                     // Draw resized image
                     ctx.drawImage(img, 0, 0, width, height);
                     
-                    // Convert to optimized format (WebP if supported, else JPEG)
+                    // Convert to optimised format (WebP if supported, else JPEG)
                     let imageData;
                     if (canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0) {
                         imageData = canvas.toDataURL('image/webp', 0.9);
@@ -3660,7 +4305,7 @@ body {
             }
         }
 
-        // AI-Powered Testing, Optimization & Auto-Fix System
+        // AI-Powered Testing, Optimisation & Auto-Fix System
         let currentTestResults = {};
         
         // Simulated test data generator (in production, this would call actual APIs)
@@ -3669,7 +4314,7 @@ body {
                 pagespeed: {
                     score: Math.floor(Math.random() * 30) + 70,
                     issues: [
-                        { issue: 'Images not optimized', severity: 'high', fixable: true, fix: 'compress-images' },
+                        { issue: 'Images not optimised', severity: 'high', fixable: true, fix: 'compress-images' },
                         { issue: 'Render-blocking resources', severity: 'medium', fixable: true, fix: 'defer-css-js' },
                         { issue: 'Large DOM size (>1500 nodes)', severity: 'low', fixable: false, fix: null },
                         { issue: 'Unused CSS (23% unused)', severity: 'medium', fixable: true, fix: 'remove-unused-css' }
@@ -3743,8 +4388,8 @@ body {
             
             if (category === 'testing') {
                 testTypes = ['pagespeed', 'mobile', 'html', 'css', 'security', 'links', 'ssl'];
-            } else if (category === 'optimization') {
-                testTypes = ['image-compression', 'code-minification', 'font-optimization', 'caching'];
+            } else if (category === 'optimisation') {
+                testTypes = ['image-compression', 'code-minification', 'font-optimisation', 'caching'];
             } else if (category === 'seo') {
                 testTypes = ['meta-tags', 'schema', 'keywords', 'backlinks', 'sitemap'];
             }
@@ -3960,7 +4605,7 @@ body {
                 fixedCount++;
             });
             
-            alert(`✓ Successfully fixed ${fixedCount} issue(s)! Your website has been optimized.`);
+            alert(`✓ Successfully fixed ${fixedCount} issue(s)! Your website has been optimised.`);
             
             // Refresh the test
             setTimeout(() => {
@@ -3979,7 +4624,7 @@ body {
                 });
             });
             
-            alert(`✓ Successfully fixed ${totalFixed} issue(s) across all categories! Your website has been comprehensively optimized.`);
+            alert(`✓ Successfully fixed ${totalFixed} issue(s) across all categories! Your website has been comprehensively optimised.`);
             
             // Close results
             setTimeout(() => {
@@ -4669,7 +5314,7 @@ Resent by Admin: ${new Date().toLocaleString('en-AU')}
             // About Section
             document.getElementById('contentAboutHeading').value = content.aboutHeading || 'About Cyberlogic IT';
             document.getElementById('contentAboutPara1').value = content.aboutPara1 || "With over 15 years of experience in the IT industry, Cyberlogic IT has been Melbourne's trusted partner for custom computer systems and comprehensive IT solutions.";
-            document.getElementById('contentAboutPara2').value = content.aboutPara2 || "We specialize in building high-performance custom PCs, providing expert IT consulting, and delivering reliable technical support to help your business thrive in the digital age.";
+            document.getElementById('contentAboutPara2').value = content.aboutPara2 || "We specialise in building high-performance custom PCs, providing expert IT consulting, and delivering reliable technical support to help your business thrive in the digital age.";
             
             // Services Header
             document.getElementById('contentServicesHeading').value = content.servicesHeading || 'Our Services';
@@ -4689,7 +5334,7 @@ Resent by Admin: ${new Date().toLocaleString('en-AU')}
                 conversationDesc: "Have questions or need IT support? We're here to help! Reach out to discuss your requirements.",
                 aboutHeading: 'About Cyberlogic IT',
                 aboutPara1: "With over 15 years of experience in the IT industry, Cyberlogic IT has been Melbourne's trusted partner for custom computer systems and comprehensive IT solutions.",
-                aboutPara2: "We specialize in building high-performance custom PCs, providing expert IT consulting, and delivering reliable technical support to help your business thrive in the digital age.",
+                aboutPara2: "We specialise in building high-performance custom PCs, providing expert IT consulting, and delivering reliable technical support to help your business thrive in the digital age.",
                 servicesHeading: 'Our Services',
                 servicesDesc: 'Comprehensive IT solutions tailored to your needs. From custom-built systems to enterprise support.'
             };
@@ -5078,9 +5723,9 @@ Resent by Admin: ${new Date().toLocaleString('en-AU')}
             return {
                 companyName: 'Cyberlogic IT',
                 tagline: 'Your Trusted IT Partner in Melbourne',
-                story: "With over 15 years of experience in the IT industry, Cyberlogic IT has been Melbourne's trusted partner for custom computer systems and comprehensive IT solutions. We specialize in building high-performance custom PCs, providing expert IT consulting, and delivering reliable technical support to help your business thrive in the digital age.",
-                mission: "To provide innovative, reliable, and customized IT solutions that empower businesses and individuals to achieve their goals through technology.",
-                vision: "To be Melbourne's leading IT services provider, recognized for excellence, innovation, and customer satisfaction.",
+                story: "With over 15 years of experience in the IT industry, Cyberlogic IT has been Melbourne's trusted partner for custom computer systems and comprehensive IT solutions. We specialise in building high-performance custom PCs, providing expert IT consulting, and delivering reliable technical support to help your business thrive in the digital age.",
+                mission: "To provide innovative, reliable, and customised IT solutions that empower businesses and individuals to achieve their goals through technology.",
+                vision: "To be Melbourne's leading IT services provider, recognised for excellence, innovation, and customer satisfaction.",
                 values: "Excellence - We deliver quality in everything we do\nIntegrity - We operate with honesty and transparency\nInnovation - We embrace new technologies and solutions\nCustomer Focus - Your success is our priority"
             };
         }
@@ -5128,6 +5773,107 @@ Resent by Admin: ${new Date().toLocaleString('en-AU')}
             document.getElementById('currentUser').textContent = username;
             document.getElementById('userAvatar').textContent = username.charAt(0).toUpperCase();
         }
+
+        // ═══════════════════════════════════════════════════════════
+        // GUIDES & DOCUMENTATION FUNCTIONS
+        // ═══════════════════════════════════════════════════════════
+
+        async function viewGuide(filename) {
+            const modal = document.getElementById('guideModal');
+            const title = document.getElementById('guideModalTitle');
+            const content = document.getElementById('guideModalContent');
+            
+            // Set title
+            title.innerHTML = '<i class="fas fa-book-reader"></i> ' + filename.replace('.md', '').replace('.txt', '').replace(/-/g, ' ');
+            
+            // Show modal with loading state
+            content.innerHTML = '<div style="text-align: center; padding: 40px;"><i class="fas fa-spinner fa-spin" style="font-size: 48px; color: var(--primary);"></i><p style="margin-top: 20px; color: #666;">Loading guide...</p></div>';
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            
+            try {
+                // Fetch the guide content
+                const response = await fetch('../' + filename);
+                if (!response.ok) throw new Error('Guide not found');
+                
+                let text = await response.text();
+                
+                // Convert markdown-style content to HTML
+                text = text
+                    // Headers
+                    .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+                    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                    .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                    // Bold
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    // Italic
+                    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                    // Code blocks
+                    .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
+                    // Inline code
+                    .replace(/`([^`]+)`/g, '<code>$1</code>')
+                    // Links
+                    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')
+                    // Horizontal rules
+                    .replace(/^---$/gim, '<hr>')
+                    // Unordered lists
+                    .replace(/^\* (.*$)/gim, '<li>$1</li>')
+                    .replace(/^- (.*$)/gim, '<li>$1</li>')
+                    // Checkboxes
+                    .replace(/\[x\]/gi, '<i class="fas fa-check-square" style="color: var(--success);"></i>')
+                    .replace(/\[ \]/g, '<i class="far fa-square" style="color: #ccc;"></i>')
+                    // Blockquotes
+                    .replace(/^&gt; (.*$)/gim, '<blockquote>$1</blockquote>')
+                    // Line breaks
+                    .replace(/\n\n/g, '</p><p>')
+                    // Wrap in paragraphs
+                    .replace(/^(?!<[hul]|<pre|<blockquote|<hr)/gim, '<p>')
+                    .replace(/$/gim, '</p>');
+                
+                // Wrap lists
+                text = text.replace(/(<li>.*?<\/li>)/gs, '<ul>$1</ul>');
+                
+                // Display the content
+                content.innerHTML = text;
+                
+                // Smooth scroll to top of modal
+                content.scrollTop = 0;
+                
+            } catch (error) {
+                content.innerHTML = `
+                    <div style="text-align: center; padding: 40px;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 48px; color: #e53e3e;"></i>
+                        <h3 style="margin-top: 20px; color: #e53e3e;">Unable to Load Guide</h3>
+                        <p style="color: #666;">The guide file "${filename}" could not be loaded.</p>
+                        <p style="color: #999; font-size: 0.9em;">Please ensure the file exists in the root directory.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function closeGuideModal() {
+            const modal = document.getElementById('guideModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside content
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('guideModal');
+            if (event.target === modal) {
+                closeGuideModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeGuideModal();
+            }
+        });
     </script>
+    
+    <!-- Admin Content Manager - All section management functions -->
+    <script src="../assets/js/admin-content-manager.js"></script>
 </body>
 </html>
